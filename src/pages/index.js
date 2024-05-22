@@ -6,7 +6,9 @@ import Head from 'next/head'
 export default function Home() {
   return (
     <>
-      <Head></Head>
+      <Head>
+        <title>Home | VISCA</title>
+      </Head>
       <div className='flex min-h-screen flex-col'>
         <Header />
         <div className='flex-grow'>
