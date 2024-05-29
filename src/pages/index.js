@@ -15,7 +15,7 @@ export default function Home() {
       <div className='flex min-h-screen flex-col'>
         <Header />
         <main className='flex-grow'>
-          <div className='flex flex-row mx-8 mt-8 justify-center gap-4'>
+          <div className='flex flex-row m-4 sm:m-8 justify-center gap-4'>
             <Link
               href={'/schools'}
               className={buttonVariants({ variant: 'outline', size: 'lg' })}

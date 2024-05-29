@@ -17,15 +17,15 @@ import { MapPin } from 'lucide-react'
 export function InfoSheet({ open, setOpen, school }) {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetContent>
+      <SheetContent className={'text-left'}>
         <SheetHeader>
           <img src={school.logo_url} className='h-10 w-10'></img>
           <div>
-            <SheetTitle className={'pr-4 leading-6 mb-1'}>
+            <SheetTitle className={'pr-4 leading-6 mb-1 text-left'}>
               {school.school_name}
             </SheetTitle>
-            <SheetDescription className={'flex items-center gap-0.5'}>
-              <MapPin height={16} width={16} />
+            <SheetDescription className={'flex gap-0.5 text-left'}>
+              <MapPin height={16} width={16} className='relative top-0.5' />
               {school.school_address}
             </SheetDescription>
           </div>

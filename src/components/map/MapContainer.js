@@ -25,7 +25,7 @@ export default function MapContainer() {
   const [school, setSchool] = useState({})
 
   return (
-    <div className='relative p-8 font-sans'>
+    <div className='relative px-4 sm:px-8'>
       <Map
         markers={data.schools.map((school) => ({
           location: [school.longitude, school.latitude],
