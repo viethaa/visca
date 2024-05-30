@@ -10,7 +10,7 @@ export default function List({ schools }) {
   return (
     <Accordion type='multiple' collapsible className='w-full'>
       {schools.map((school) => (
-        <AccordionItem value={school.school_name}>
+        <AccordionItem key={school.school_name} value={school.school_name}>
           <AccordionTrigger className={'text-left'}>
             {school.school_name}
           </AccordionTrigger>
