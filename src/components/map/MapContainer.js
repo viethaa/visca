@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Map from './Map'
 import { Dialog } from '@headlessui/react'
-import data from '../../../data.json'
+import data from '@/data.json'
 import Links from './Links'
+import { InfoSheet } from './InfoSheet'
 
 const links = [
   {
@@ -24,7 +25,7 @@ export default function MapContainer() {
   const [school, setSchool] = useState({})
 
   return (
-    <div className='relative p-8 font-sans'>
+    <div className='relative'>
       <Map
         markers={data.schools.map((school) => ({
           location: [school.longitude, school.latitude],
@@ -36,7 +37,8 @@ export default function MapContainer() {
         setSchool={setSchool}
         schools={data.schools}
       />
-      <Dialog
+      <InfoSheet open={open} setOpen={setOpen} school={school} />
+      {/* <Dialog
         className='fixed inset-0 flex items-center justify-center bg-black/70'
         open={open}
         onClose={() => setOpen(false)}
@@ -87,7 +89,7 @@ export default function MapContainer() {
             <path d='M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z' />
           </svg>
         </Dialog.Panel>
-      </Dialog>
+      </Dialog> */}
     </div>
   )
 }
