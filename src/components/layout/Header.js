@@ -11,7 +11,7 @@ export default function Header() {
         </div>
       </div>
       <div className='text-2xl md:text-4xl max-w-2xl mx-auto p-4 sm:p-8 text-center'>
-        <h1 className='font-bold'>
+        <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
           Counselor Contacts of International Schools in Hanoi for University
           Visits
         </h1>

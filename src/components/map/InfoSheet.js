@@ -56,6 +56,9 @@ export function InfoSheet({ open, setOpen, school }) {
           <div className='font-semibold flex flex-row gap-4 text-sm'>
             <Links school={school} />
           </div>
+          <div>
+            <img className='rounded-md mt-4' src={school.image_url} />
+          </div>
         </div>
         <SheetFooter></SheetFooter>
       </SheetContent>
