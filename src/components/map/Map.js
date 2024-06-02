@@ -39,10 +39,14 @@ export default function Map({ markers, schools, setOpen, setSchool }) {
     }
     const map = mapRef.current
 
-    const pins = markers.map((school) => [
-      icon(school.location, school.name, school.pin, 0.5, [0.5, 100]),
-      logo(school.location, school.name, school.logo_url, 0.2, [0.5, 215]),
-    ])
+    const pins = markers.map((school) => {
+      // if (school.logo_url) {
+      return [
+        icon(school.location, school.name, school.pin, 0.5, [0.5, 100]),
+        logo(school.location, school.name, school.logo_url, 0.2, [0.5, 215]),
+      ]
+      // }
+    })
 
     map
       .getLayers()
@@ -98,7 +102,7 @@ export default function Map({ markers, schools, setOpen, setSchool }) {
     <div
       ref={ref}
       id='map'
-      className='h-[640px] max-w-6xl mx-auto overflow-hidden rounded-lg lg:flex-grow border border-gray-200'
+      className='h-[600px] max-w-6xl mx-auto overflow-hidden rounded-lg lg:flex-grow border border-gray-200'
     ></div>
   )
 }

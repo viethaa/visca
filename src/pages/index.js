@@ -28,12 +28,23 @@ export default function Home() {
 
           <div className='max-w-5xl mx-auto'>
             <div className='flex flex-col gap-4'>
-              <p className='sm:mb-4 max-w-4xl mx-auto text-center'>
-                Welcome to VISCA, your go-to resource for comprehensive
-                counselor contacts and detailed school information for
-                international schools in Hanoi. Simplifying your search for the
-                best educational opportunities and support.
-              </p>
+              <div className='mx-auto text-center flex flex-col gap-1 sm:gap-2'>
+                <h2 className='text-xl font-semibold text-black'>
+                  Welcome to VISCA!
+                </h2>
+                <p className='sm:mb-4 max-w-4xl mx-auto text-center'>
+                  Welcome to the Vietnam International School Counselors
+                  Association (VISCA). We are committed to providing exceptional
+                  counseling services to students and educators across Vietnam.
+                  <span className=' hidden sm:inline'>
+                    {' '}
+                    Our mission is to empower education and build futures by
+                    fostering a supportive and nurturing environment for
+                    academic and personal growth.
+                  </span>
+                </p>
+              </div>
+
               <MapContainer />
               <div className='mx-auto w-full'>
                 <List schools={data.schools} />
