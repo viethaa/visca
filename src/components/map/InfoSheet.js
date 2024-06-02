@@ -17,7 +17,7 @@ import { MapPin } from 'lucide-react'
 export function InfoSheet({ open, setOpen, school }) {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetContent className={'text-left'}>
+      <SheetContent className={'text-left overflow-y-scroll'}>
         <SheetHeader>
           <img src={school.logo_url} className='h-10 w-10'></img>
           <div>

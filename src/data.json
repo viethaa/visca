@@ -18,9 +18,9 @@
     },
     {
       "school_name": "British Vietnamese International School (BVIS) Hanoi",
-      "school_address": "Van Tri Golf Estate, Kim Nỗ, Đông Anh, Hà Nội.",
-      "latitude": 21.1,
-      "longitude": 105.7948,
+      "school_address": "Royal City, 72A Đ. Nguyễn Trãi, Street, Hà Nội, Vietnam",
+      "latitude": 21.0019421,
+      "longitude": 105.8158314,
       "counselor_name": "Colleen Usher",
       "counselor_email": "colleen.usher@bvishanoi.com ",
       "counselor_phone": "+84 2452558800 Ext 123",
@@ -29,14 +29,12 @@
       "school_profile": "https://www.nordangliaeducation.com/-/media/bvis-hanoi/about-us/bvis-hanoi-school-profile_ay-23-24.pdfhttps://www.nordangliaeducation.com/-/media/bvis-hanoi/about-us/bvis-hanoi-school-profile_ay-23-24.pdf",
       "school_website": "https://www.nordangliaeducation.com/bvis-hanoi",
       "calendar": "https://www.nordangliaeducation.com/bvis-hanoi/parent-essentials/calendar",
-      "logo_url": "/cish.png",
-      "image_url": "https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1660624756/concordiahanoiorg/u0uqoag9szxm0a35hwxm/ConcordiaHanoiCampusImage06-09-19.jpg"
+      "logo_url": "/bvis.png",
+      "image_url": "https://www.nordangliaeducation.com/bvis-hanoi/-/media/bvis-hanoi/outstanding-experience/bvishanoi_campus_level2header_1317x741_1.jpg?h=741&iar=0&w=1317&rev=-1&hash=20B0041510582428EB483609B2975E1D"
     },
     {
       "school_name": "CPC Global Education (Consulting Group)",
-      "school_address": "Van Tri Golf Estate, Kim Nỗ, Đông Anh, Hà Nội.",
-      "latitude": 21.05,
-      "longitude": 105.7948,
+      "school_address": "N/A",
       "counselor_name": "Caitlin Worsham, Ping Nguyen",
       "counselor_email": "caitlin@cpcglobaleducation.com",
       "counselor_phone": "+1 206-330-6935",
@@ -45,30 +43,29 @@
       "school_profile": "https://www.cpcglobaleducation.com/",
       "school_website": "https://www.cpcglobaleducation.com/",
       "calendar": "N/A",
-      "logo_url": "/cish.png",
-      "image_url": "https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1660624756/concordiahanoiorg/u0uqoag9szxm0a35hwxm/ConcordiaHanoiCampusImage06-09-19.jpg"
+      "image_url": "/cish.png",
+      "logo_url": "/cish.png"
     },
     {
       "school_name": "UNIS Hanoi",
-      "school_address": "Van Tri Golf Estate, Kim Nỗ, Đông Anh, Hà Nội.",
-      "latitude": 21,
-      "longitude": 105.7948,
+      "school_address": "G9, Khu đô thị Ciputra, Tây Hồ, Hà Nội, Vietnam",
+      "latitude": 21.0750451,
+      "longitude": 105.8054337,
       "counselor_name": "Daniel Nguyen",
       "counselor_email": "dhhnguyen@unishanoi.org",
-      "counselor_phone": "+84969953879",
       "contact_point": "Trang Trinh - tttrang1@unishanoi.org ",
       "preferred_time": "11:05am - 11:55am",
       "school_profile": "https://drive.google.com/file/d/15-d6IaAlnlfUa62H8BnlJGBGf0rO1XaC/view?usp=sharing",
       "school_website": "https://www.unishanoi.org",
       "calendar": "NA",
-      "logo_url": "/cish.png",
-      "image_url": "https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1660624756/concordiahanoiorg/u0uqoag9szxm0a35hwxm/ConcordiaHanoiCampusImage06-09-19.jpg"
+      "logo_url": "https://avatars.githubusercontent.com/u/8739604?s=100",
+      "image_url": "https://resources.finalsite.net/images/f_auto,q_auto/v1699347294/hanoi/uo3dwf6qrscrh8cytc4z/2324_UNISHanoiCampus_Landscape_Phong_Le_8_web.jpg"
     },
     {
       "school_name": "British International School Hanoi",
-      "school_address": "Van Tri Golf Estate, Kim Nỗ, Đông Anh, Hà Nội.",
-      "latitude": 21.03,
-      "longitude": 105.7948,
+      "school_address": "Vinhomes Riverside, Hoa Lan, Road, Long Biên, Hà Nội, Vietnam",
+      "latitude": 21.0443308,
+      "longitude": 105.9190302,
       "counselor_name": "Joe McKinney",
       "counselor_email": "joseph.mckinney@bishanoi.com",
       "counselor_phone": "+84969953880",
@@ -77,8 +74,8 @@
       "school_profile": "https://www.nordangliaeducation.com/bis-hanoi/academic-excellence/university-destinations",
       "school_website": "https://www.nordangliaeducation.com/bis-hanoi",
       "calendar": "https://www.nordangliaeducation.com/bis-hanoi/parent-essentials/calendar",
-      "logo_url": "/cish.png",
-      "image_url": "https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1660624756/concordiahanoiorg/u0uqoag9szxm0a35hwxm/ConcordiaHanoiCampusImage06-09-19.jpg"
+      "logo_url": "/bis.png",
+      "image_url": "https://media-whichmedia.s3.ap-southeast-1.amazonaws.com/media/large/e/7/e7caf4e9dafd.jpg"
     }
   ]
 }
