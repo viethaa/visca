@@ -53,11 +53,9 @@ export default function Page() {
         </div>
         <div className='flex z-10 relative flex-col items-center justify-center my-8 gap-4'>
           <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center max-w-3xl'>
-            Vietnam International School Counselors Association
+            Vietnam International School Counselors Association - Hanoi
           </h1>
-          <p className='text-lg md:text-xl text-center text-gray-300'>
-            Empowering Education, Building Futures
-          </p>
+          
         </div>
       </header>
     </>
