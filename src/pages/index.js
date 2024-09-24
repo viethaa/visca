@@ -34,13 +34,7 @@ export default function Home() {
                 </h2>
                 <p className='sm:mb-4 max-w-4xl mx-auto text-center'>
                   Welcome to the Vietnam International School Counselors
-                  Association (VISCA). 
-                  // <span className=' hidden sm:inline'>
-                  //   {' '}
-                  //   Our mission is to empower education and build futures by
-                  //   fostering a supportive and nurturing environment for
-                  //   academic and personal growth.
-                  // </span>
+                  Association (VISCA).
                 </p>
               </div>
 
