@@ -34,7 +34,7 @@ export default function Home() {
                 </h2>
                 <p className='sm:mb-4 max-w-4xl mx-auto text-center'>
                   Welcome to the Vietnam International School Counselors
-                  Association (VISCA).
+                  Association - Hanoi (VISCA).
                 </p>
               </div>
 
