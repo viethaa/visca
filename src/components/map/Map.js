@@ -80,10 +80,10 @@ export default function Map({ markers, schools, setOpen, setSchool }) {
         return feature
       })
       setOpen(false)
-      setSchool(schools.find((school) => school.name === feature?.values_.name))
       if (!feature) {
         return
       }
+      setSchool(schools.find((school) => school.name === feature?.values_.name))
       setOpen(true)
     })
 
