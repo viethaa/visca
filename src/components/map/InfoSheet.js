@@ -19,14 +19,14 @@ export function InfoSheet({ open, setOpen, school }) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetContent className={'text-left overflow-y-scroll'}>
         <SheetHeader>
-          <img src={school.logo_url} className='h-10 w-10'></img>
+          <img src={school.logo} className='h-10 w-10'></img>
           <div>
             <SheetTitle className={'pr-4 leading-6 mb-1 text-left'}>
-              {school.school_name}
+              {school.name}
             </SheetTitle>
             <SheetDescription className={'flex gap-0.5 text-left'}>
               <MapPin height={16} width={16} className='relative top-0.5' />
-              {school.school_address}
+              {school.address}
             </SheetDescription>
           </div>
         </SheetHeader>
@@ -57,7 +57,7 @@ export function InfoSheet({ open, setOpen, school }) {
             <Links school={school} />
           </div>
           <div>
-            <img className='rounded-md mt-4' src={school.image_url} />
+            <img className='rounded-md mt-4' src={school.pic} />
           </div>
         </div>
         <SheetFooter></SheetFooter>

@@ -2,7 +2,7 @@ import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
 import { Style, Icon } from 'ol/style'
 
-export const icon = (coords, name, src, scale, anchor) => {
+export const icon = (coords, name, src, anchor) => {
   const iconFeature = new Feature({
     geometry: new Point(coords),
     name: name,
@@ -11,11 +11,11 @@ export const icon = (coords, name, src, scale, anchor) => {
   iconFeature.setStyle(
     new Style({
       image: new Icon({
-        anchor: anchor,
+        anchor: [0.5, 100],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
         src: src,
-        scale: scale,
+        scale: 0.5,
       }),
     })
   )
@@ -23,7 +23,7 @@ export const icon = (coords, name, src, scale, anchor) => {
   return iconFeature
 }
 
-export const logo = (coords, name, src, scale, anchor) => {
+export const logo = (coords, name, src) => {
   const logoFeature = new Feature({
     geometry: new Point(coords),
     name: name,
@@ -32,11 +32,12 @@ export const logo = (coords, name, src, scale, anchor) => {
   logoFeature.setStyle(
     new Style({
       image: new Icon({
-        anchor: anchor,
+        anchor: [0.5, 215],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
         src: src,
-        scale: scale,
+        height: 20,
+        width: 20,
       }),
     })
   )

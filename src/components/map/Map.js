@@ -5,7 +5,6 @@ import View from 'ol/View.js'
 import { useGeographic } from 'ol/proj.js'
 import VectorLayer from 'ol/layer/Vector.js'
 import VectorSource from 'ol/source/Vector.js'
-import OSM from 'ol/source/OSM.js'
 import { icon, logo } from '../mapFeatures'
 import StadiaMaps from 'ol/source/StadiaMaps'
 
@@ -40,12 +39,11 @@ export default function Map({ markers, schools, setOpen, setSchool }) {
     const map = mapRef.current
 
     const pins = markers.map((school) => {
-      // if (school.logo_url) {
+      console.log(school)
       return [
-        icon(school.location, school.name, school.pin, 0.5, [0.5, 100]),
-        logo(school.location, school.name, school.logo_url, 0.2, [0.5, 215]),
+        icon(school.location, school.name, school.pin),
+        logo(school.location, school.name, school.logo),
       ]
-      // }
     })
 
     map
@@ -82,9 +80,7 @@ export default function Map({ markers, schools, setOpen, setSchool }) {
         return feature
       })
       setOpen(false)
-      setSchool(
-        schools.find((school) => school.school_name === feature.values_.name)
-      )
+      setSchool(schools.find((school) => school.name === feature?.values_.name))
       if (!feature) {
         return
       }

@@ -10,9 +10,10 @@ export default function List({ schools }) {
   return (
     <Accordion type='multiple' collapsible className='w-full'>
       {schools.map((school) => (
-        <AccordionItem key={school.school_name} value={school.school_name}>
-          <AccordionTrigger className={'text-left'}>
-            {school.school_name}
+        <AccordionItem key={school.name} value={school.name}>
+          <AccordionTrigger className={'flex'}>
+            <img src={school.logo} className='h-5 w-5' />
+            {school.name}
           </AccordionTrigger>
           <AccordionContent>
             <div className='grid grid-cols-3 gap-4 text-sm'>
