@@ -1,14 +1,23 @@
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import MapContainer from '@/components/map/MapContainer'
-import { Button } from '@/components/ui/button'
 import Head from 'next/head'
-import Link from 'next/link'
-import { buttonVariants } from '@/components/ui/button'
 import List from '@/components/List'
 import data from '@/data.json'
+import { fetchSchools } from '@/functions'
 
-export default function Home() {
+export async function getServerSideProps() {
+  const schools = await fetchSchools(process.env.SPREADSHEET_ID)
+
+  return {
+    props: {
+      schools,
+    },
+  }
+}
+
+export default function Home({ schools }) {
+  console.log(schools)
   return (
     <>
       <Head>
@@ -45,9 +54,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <MapContainer />
+              <MapContainer schools={schools} />
               <div className='mx-auto w-full'>
-                <List schools={data.schools} />
+                <List schools={schools} />
               </div>
             </div>
           </div>
