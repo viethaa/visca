@@ -32,9 +32,9 @@ export const logo = (coords, name, src) => {
   logoFeature.setStyle(
     new Style({
       image: new Icon({
-        anchor: [0.5, 215],
+        anchor: [0.5, 2.15],
         anchorXUnits: 'fraction',
-        anchorYUnits: 'pixels',
+        anchorYUnits: 'fraction',
         src: src,
         height: 20,
         width: 20,
