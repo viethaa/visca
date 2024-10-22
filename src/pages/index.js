@@ -6,13 +6,15 @@ import List from '@/components/List'
 import data from '@/data.json'
 import { fetchSchools } from '@/functions'
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const schools = await fetchSchools(process.env.SPREADSHEET_ID)
 
   return {
     props: {
       schools,
     },
+
+    revalidate: 3600,
   }
 }
 
