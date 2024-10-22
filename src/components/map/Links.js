@@ -4,11 +4,11 @@ export default function Links({ school }) {
   const links = [
     {
       name: 'Profile',
-      href: school.school_profile,
+      href: school.profile,
     },
     {
       name: 'Website',
-      href: school.school_website,
+      href: school.website,
     },
     {
       name: 'Calendar',
