@@ -14,7 +14,7 @@ export async function getStaticProps() {
       schools,
     },
 
-    revalidate: 3600,
+    revalidate: 60,
   }
 }
 
