@@ -35,6 +35,7 @@ export default function MapContainer({ schools }) {
           logo: school.logo,
           name: school.name,
         }))}
+        places={data.places}
         setOpen={setOpen}
         setSchool={setSchool}
         schools={schools}

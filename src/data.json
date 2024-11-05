@@ -77,5 +77,21 @@
       "logo_url": "/bis.png",
       "image_url": "https://media-whichmedia.s3.ap-southeast-1.amazonaws.com/media/large/e/7/e7caf4e9dafd.jpg"
     }
+  ],
+  "places": [
+    {
+      "place_name": "Noibai Airport",
+      "place_address": "Phú Minh, Sóc Sơn, Hà Nội, Vietnam",
+      "latitude": 21.215,
+      "longitude": 105.7918,
+      "icon": "/plane.png"
+    },
+    {
+      "place_name": "Hoan Kiem Lake",
+      "place_address": "Hoàn Kiếm, Hà Nội, Vietnam",
+      "latitude": 21.0287,
+      "longitude": 105.8521,
+      "icon": "/castle.png"
+    }
   ]
 }

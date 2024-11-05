@@ -9,6 +9,17 @@ import { fetchSchools } from '@/functions'
 export async function getStaticProps() {
   const schools = await fetchSchools(process.env.SPREADSHEET_ID)
 
+  //order schools by name
+  schools.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1
+    }
+    if (a.name > b.name) {
+      return 1
+    }
+    return 0
+  })
+
   return {
     props: {
       schools,

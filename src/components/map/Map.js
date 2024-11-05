@@ -8,7 +8,7 @@ import VectorSource from 'ol/source/Vector.js'
 import { icon, logo } from '../mapFeatures'
 import StadiaMaps from 'ol/source/StadiaMaps'
 
-export default function Map({ markers, schools, setOpen, setSchool }) {
+export default function Map({ markers, schools, setOpen, setSchool, places }) {
   useGeographic()
   const ref = useRef(null)
   const mapRef = useRef(null)
@@ -41,8 +41,26 @@ export default function Map({ markers, schools, setOpen, setSchool }) {
     const pins = markers.map((school) => {
       console.log(school)
       return [
-        icon(school.location, school.name, school.pin),
-        logo(school.location, school.name, school.logo),
+        icon(school.location, school.name, school.pin, 'school'),
+        logo(school.location, school.name, school.logo, 1, 'school'),
+      ]
+    })
+
+    const placesPins = places.map((place) => {
+      return [
+        icon(
+          [place.longitude, place.latitude],
+          place.name,
+          '/gray-pin.png',
+          'place'
+        ),
+        logo(
+          [place.longitude, place.latitude],
+          place.name,
+          place.icon,
+          0.5,
+          'place'
+        ),
       ]
     })
 
@@ -53,7 +71,7 @@ export default function Map({ markers, schools, setOpen, setSchool }) {
       .forEach((layer) => map.removeLayer(layer))
 
     const vectorSource = new VectorSource({
-      features: pins.flat(),
+      features: [...pins.flat(), ...placesPins.flat()],
     })
 
     map.addLayer(
@@ -83,6 +101,13 @@ export default function Map({ markers, schools, setOpen, setSchool }) {
       if (!feature) {
         return
       }
+
+      console.log(feature?.values_.type)
+
+      if (feature?.values_.type === 'place') {
+        return
+      }
+
       setSchool(schools.find((school) => school.name === feature?.values_.name))
       setOpen(true)
     })
