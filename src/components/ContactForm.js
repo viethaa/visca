@@ -14,13 +14,7 @@ import { Button } from './ui/button'
 
 export default function ContactForm() {
   return (
-    <form
-      id='contact-form'
-      method='POST'
-      name='contact-form'
-      className='space-y-4'
-      netlify
-    >
+    <form id='contact-form' name='contact-form' className='space-y-4' netlify>
       <input type='hidden' name='form-name' value='contact-form' />
       <div className='space-y-1'>
         <Label htmlFor='nameOrOrganization'>Name/Organization</Label>
