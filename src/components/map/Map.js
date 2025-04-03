@@ -8,7 +8,16 @@ import VectorSource from 'ol/source/Vector.js'
 import { icon, logo } from '../mapFeatures'
 import StadiaMaps from 'ol/source/StadiaMaps'
 
-export default function Map({ markers, schools, setOpen, setSchool, places }) {
+export default function Map({
+  markers,
+  schools,
+  setSchoolOpen,
+  setSchool,
+  places,
+  hotels,
+  setPlaceOpen,
+  setPlace,
+}) {
   useGeographic()
   const ref = useRef(null)
   const mapRef = useRef(null)
@@ -41,7 +50,7 @@ export default function Map({ markers, schools, setOpen, setSchool, places }) {
     const pins = markers.map((school) => {
       console.log(school)
       return [
-        icon(school.location, school.name, school.pin, 'school'),
+        icon(school.location, school.name, '/pins/black.png', 'school'),
         logo(school.location, school.name, school.logo, 1, 'school'),
       ]
     })
@@ -51,7 +60,7 @@ export default function Map({ markers, schools, setOpen, setSchool, places }) {
         icon(
           [place.longitude, place.latitude],
           place.name,
-          '/gray-pin.png',
+          '/pins/gray.png',
           'place'
         ),
         logo(
@@ -64,6 +73,24 @@ export default function Map({ markers, schools, setOpen, setSchool, places }) {
       ]
     })
 
+    const hotelsPins = hotels.map((hotel) => {
+      return [
+        icon(
+          [hotel.longitude, hotel.latitude],
+          hotel.name,
+          '/pins/blue.png',
+          'hotel'
+        ),
+        logo(
+          [hotel.longitude, hotel.latitude],
+          hotel.name,
+          hotel.icon,
+          0.8,
+          'hotel'
+        ),
+      ]
+    })
+
     map
       .getLayers()
       .getArray()
@@ -71,7 +98,7 @@ export default function Map({ markers, schools, setOpen, setSchool, places }) {
       .forEach((layer) => map.removeLayer(layer))
 
     const vectorSource = new VectorSource({
-      features: [...pins.flat(), ...placesPins.flat()],
+      features: [...pins.flat(), ...placesPins.flat(), ...hotelsPins.flat()],
     })
 
     map.addLayer(
@@ -97,19 +124,38 @@ export default function Map({ markers, schools, setOpen, setSchool, places }) {
       const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
         return feature
       })
-      setOpen(false)
+      setSchoolOpen(false)
       if (!feature) {
         return
       }
 
       console.log(feature?.values_.type)
 
-      if (feature?.values_.type === 'place') {
-        return
+      switch (feature?.values_.type) {
+        case 'school':
+          setSchool(
+            schools.find((school) => school.name === feature?.values_.name)
+          )
+          setSchoolOpen(true)
+          break
+        case 'hotel':
+          setPlace(hotels.find((h) => h.name === feature?.values_.name))
+          setPlaceOpen(true)
+          break
+        default:
+          setPlace(places.find((h) => h.name === feature?.values_.name))
+          setPlaceOpen(true)
+          break
       }
 
-      setSchool(schools.find((school) => school.name === feature?.values_.name))
-      setOpen(true)
+      // if (feature?.values_.type === 'place') {
+      //   setPlace(places.find((place) => place.name === feature?.values_.name))
+      //   setPlaceOpen(true)
+      //   return
+      // }
+
+      // setSchool(schools.find((school) => school.name === feature?.values_.name))
+      // setSchoolOpen(true)
     })
 
     map.on('pointermove', function (e) {

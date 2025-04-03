@@ -59,6 +59,20 @@ export default function Home({ schools }) {
                   Association - Hanoi (VISCA).
                 </p>
               </div>
+              <div className='flex gap-6'>
+                <div className='flex items-center gap-1.5'>
+                  <div className='w-4 h-4 rounded bg-black'></div>
+                  <span className='text-sm font-semibold'>Schools</span>
+                </div>
+                <div className='flex items-center gap-1.5'>
+                  <div className='w-4 h-4 rounded bg-cyan-500'></div>
+                  <span className='text-sm font-semibold'>Hotels</span>
+                </div>
+                <div className='flex items-center gap-1.5'>
+                  <div className='w-4 h-4 rounded bg-gray-400'></div>
+                  <span className='text-sm font-semibold'>Places</span>
+                </div>
+              </div>
 
               <MapContainer schools={schools} />
               <div className='mx-auto w-full'>

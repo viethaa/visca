@@ -80,18 +80,65 @@
   ],
   "places": [
     {
-      "place_name": "Noibai Airport",
-      "place_address": "Phú Minh, Sóc Sơn, Hà Nội, Vietnam",
+      "name": "Noibai Airport",
+      "address": "Phú Minh, Sóc Sơn, Hà Nội, Vietnam",
       "latitude": 21.215,
       "longitude": 105.7918,
       "icon": "/plane.png"
     },
     {
-      "place_name": "Hoan Kiem Lake",
-      "place_address": "Hoàn Kiếm, Hà Nội, Vietnam",
+      "name": "Hoan Kiem Lake / Downtown Hanoi",
+      "address": "Hoàn Kiếm, Hà Nội, Vietnam",
       "latitude": 21.0287,
       "longitude": 105.8521,
       "icon": "/castle.png"
+    }
+  ],
+  "hotels": [
+    {
+      "name": "Sheraton Hanoi Hotel",
+      "address": "K5 Nghi Tàm, 11 Xuân Diệu, Tây Hồ, Hà Nội, Vietnam",
+      "latitude": 21.0597,
+      "longitude": 105.8317,
+      "phone": "+84 024 3719 9000",
+      "icon": "https://i.pinimg.com/1200x/b6/22/34/b6223414735309ceb097722445fb15fa.jpg",
+      "website": "https://www.marriott.com/en-us/hotels/hanhs-sheraton-hanoi-hotel/overview/"
+    },
+    {
+      "name": "InterContinental Hanoi Westlake",
+      "address": "5 Từ Hoa, Quảng An, Tây Hồ, Hà Nội, Vietnam",
+      "latitude": 21.0584,
+      "longitude": 105.8315,
+      "phone": "+84 024 6270 8888",
+      "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xkfs1V0wYSOEp4fkX1LVhFAbNYcInx_12g&s",
+      "website": "https://hanoi.intercontinental.com/"
+    },
+    {
+      "name": "JW Marriott Hotel Hanoi",
+      "address": "8 Đỗ Đức Dục, Mễ Trì, Nam Từ Liêm, Hà Nội, Vietnam",
+      "latitude": 21.0025056,
+      "longitude": 105.7620046,
+      "phone": "+84 024 3833 5588",
+      "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Marriott_hotels_logo14.svg/2560px-Marriott_hotels_logo14.svg.png",
+      "website": "https://www.marriott.com/en-us/hotels/hanjw-jw-marriott-hotel-hanoi/overview/"
+    },
+    {
+      "name": "Pan Pacific Hanoi",
+      "address": "1 Thanh Niên, Trúc Bạch, Ba Đình, Hà Nội, Vietnam",
+      "latitude": 21.0498,
+      "longitude": 105.8399,
+      "phone": "+84 024 3823 8888",
+      "icon": "https://ucarecdn.com/cdedc68e-43d7-4a01-95bc-e2e3ed0b2232/-/crop/1996x2000/0,0/-/preview/",
+      "website": "https://www.panpacific.com/en/hotels-and-resorts/pp-hanoi.html"
+    },
+    {
+      "name": "Hanoi Hotel",
+      "address": "1 Thanh Niên, Trúc Bạch, Ba Đình, Hà Nội, Vietnam",
+      "latitude": 21.0280629,
+      "longitude": 105.8205247,
+      "phone": "+84 024 3845 2270",
+      "icon": "https://hanoihotel.com.vn/wp-content/uploads/2019/06/Logo-Hanoi-Hotel-gold-1-768x499.png",
+      "website": "https://www.booking.com/hotel/vn/hanoi.vi.html?aid=356980&label=gog235jc-1FCAso9AE4rANIKlgDaPQBiAEBmAEquAEXyAEM2AEB6AEB-AECiAIBqAIDuALL87e_BsACAdICJGZjYjY1ODMwLTllZDQtNGU2Ni1iYzBmLWZmZGEwZmExZTQzNdgCBeACAQ&sid=e03875a449fef5feccdbcfc52af3fe69&age=0&all_sr_blocks=18451513_121936363_0_2_0&checkin=2025-04-17&checkout=2025-04-18&dest_id=-3714993&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=18451513_121936363_0_2_0&hpos=1&matching_block_id=18451513_121936363_0_2_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=18451513_121936363_0_2_0__184500000&srepoch=1743649235&srpvid=6fad1526ebec01c5&type=total&ucfs=1&"
     }
   ]
 }

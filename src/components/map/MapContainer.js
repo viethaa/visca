@@ -4,6 +4,7 @@ import { Dialog } from '@headlessui/react'
 import data from '@/data.json'
 import Links from './Links'
 import { InfoSheet } from './InfoSheet'
+import { PlaceInfoSheet } from './PlaceInfoSheet'
 
 const links = [
   {
@@ -21,8 +22,10 @@ const links = [
 ]
 
 export default function MapContainer({ schools }) {
-  const [open, setOpen] = useState(false)
+  const [schoolOpen, setSchoolOpen] = useState(false)
   const [school, setSchool] = useState({})
+  const [placeOpen, setPlaceOpen] = useState(false)
+  const [place, setPlace] = useState({})
 
   console.log(school)
 
@@ -36,11 +39,15 @@ export default function MapContainer({ schools }) {
           name: school.name,
         }))}
         places={data.places}
-        setOpen={setOpen}
+        setSchoolOpen={setSchoolOpen}
         setSchool={setSchool}
+        setPlaceOpen={setPlaceOpen}
+        setPlace={setPlace}
         schools={schools}
+        hotels={data.hotels}
       />
-      <InfoSheet open={open} setOpen={setOpen} school={school} />
+      <InfoSheet open={schoolOpen} setOpen={setSchoolOpen} school={school} />
+      <PlaceInfoSheet open={placeOpen} setOpen={setPlaceOpen} place={place} />
     </div>
   )
 }

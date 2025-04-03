@@ -1,0 +1,40 @@
+{
+  "hotels": [
+    {
+      "name": "Sheraton Hanoi Hotel",
+      "address": "K5 Nghi Tàm, 11 Xuân Diệu, Tây Hồ, Hà Nội, Vietnam",
+      "latitude": 21.0597,
+      "longitude": 105.8317,
+      "phone": "+84 024 3719 9000",
+      "logo": "https://images.seeklogo.com/logo-png/43/3/sheraton-hotels-logo-png_seeklogo-436266.png",
+      "website": "https://www.marriott.com/en-us/hotels/hanhs-sheraton-hanoi-hotel/overview/"
+    },
+    {
+      "name": "InterContinental Hanoi Westlake",
+      "address": "5 Từ Hoa, Quảng An, Tây Hồ, Hà Nội, Vietnam",
+      "latitude": 21.0584,
+      "longitude": 105.8315,
+      "phone": "+84 024 6270 8888",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xkfs1V0wYSOEp4fkX1LVhFAbNYcInx_12g&s",
+      "website": "https://hanoi.intercontinental.com/"
+    },
+    {
+      "name": "JW Marriott Hotel Hanoi",
+      "address": "8 Đỗ Đức Dục, Mễ Trì, Nam Từ Liêm, Hà Nội, Vietnam",
+      "latitude": 21.0025056,
+      "longitude": 105.7620046,
+      "phone": "+84 024 3833 5588",
+      "logo": "https://logosandtypes.com/wp-content/uploads/2020/07/marriott.svg",
+      "website": "https://www.marriott.com/en-us/hotels/hanjw-jw-marriott-hotel-hanoi/overview/"
+    },
+    {
+      "name": "Pan Pacific Hanoi",
+      "address": "1 Thanh Niên, Trúc Bạch, Ba Đình, Hà Nội, Vietnam",
+      "latitude": 21.0498,
+      "longitude": 105.8399,
+      "phone": "+84 024 3823 8888",
+      "logo": "https://ucarecdn.com/cdedc68e-43d7-4a01-95bc-e2e3ed0b2232/-/crop/1996x2000/0,0/-/preview/",
+      "website": "https://www.panpacific.com/en/hotels-and-resorts/pp-hanoi.html"
+    }
+  ]
+}
