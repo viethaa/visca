@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import ContactDialog from '../ContactDialog'
 
 export default function Page() {
   return (
@@ -29,33 +30,13 @@ export default function Page() {
             >
               Home
             </Link>
-            <Link
-              className='bg-gray-700 px-3 py-1.5 rounded hover:bg-gray-500 flex items-center justify-center'
-              href='/'
-            >
-              Contact
-            </Link>
-            <Link
-              className='bg-gray-700 px-3 py-1.5 rounded hover:bg-gray-500 flex items-center justify-center'
-              href='/'
-            >
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                height='24px'
-                viewBox='0 -960 960 960'
-                width='24px'
-                fill='#e8eaed'
-              >
-                <path d='M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z' />
-              </svg>
-            </Link>
+            <ContactDialog />
           </div>
         </div>
         <div className='flex z-10 relative flex-col items-center justify-center my-8 gap-4'>
           <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center max-w-3xl'>
             Vietnam International School Counselors Association - Hanoi
           </h1>
-          
         </div>
       </header>
     </>
