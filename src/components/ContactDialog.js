@@ -25,7 +25,7 @@ export default function ContactDialog() {
             Please fill out the form below to inquire about our website.
           </DialogDescription>
         </DialogHeader>
-        <form name='contact' className='space-y-4' netlify>
+        <form name='contact' className='space-y-4' data-netlify='true' hidden>
           <div>
             <Label htmlFor='nameOrOrganization'>Name/Organization</Label>
             <Input
