@@ -19,8 +19,9 @@ export default function ContactForm() {
       method='POST'
       name='contact-form'
       className='space-y-4'
-      data-netlify='true'
+      netlify
     >
+      <input type='hidden' name='form-name' value='contact-form' />
       <div className='space-y-1'>
         <Label htmlFor='nameOrOrganization'>Name/Organization</Label>
         <Input
