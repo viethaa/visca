@@ -5,6 +5,8 @@ import Head from 'next/head'
 import List from '@/components/List'
 import data from '@/data.json'
 import { fetchSchools } from '@/functions'
+import Image from 'next/image'
+import AdDialog from '@/components/AdDialog'
 
 export async function getStaticProps() {
   const schools = await fetchSchools(process.env.SPREADSHEET_ID)
@@ -81,6 +83,7 @@ export default function Home({ schools }) {
             </div>
           </div>
         </main>
+        <AdDialog />
         <Footer />
       </div>
     </>
