@@ -16,7 +16,7 @@ import ContactForm from './ContactForm'
 export default function ContactDialog() {
   return (
     <Dialog>
-      <DialogTrigger className='bg-gray-700 px-3 py-1.5 rounded hover:bg-gray-500 flex items-center justify-center'>
+      <DialogTrigger className='class="rounded-lg px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 transition"'>
         Contact
       </DialogTrigger>
       <DialogContent>
