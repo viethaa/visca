@@ -168,8 +168,17 @@ export default function HeaderBanner() {
           {/* CONTENT */}
           <div className="absolute inset-0 z-10 flex items-center justify-center">
             <div className="text-center max-w-6xl px-6">
-              {/* Clean white gradient title only */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-white via-white/90 to-white bg-clip-text text-transparent">
+              <h1
+                className="
+    -mt-14  /* moves text further upward */
+    text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+    font-extrabold tracking-tight
+    bg-gradient-to-b from-white via-white to-white
+    bg-clip-text text-transparent
+    drop-shadow-[0_3px_14px_rgba(255,255,255,0.55)]
+    [text-shadow:0_5px_28px_rgba(0,0,0,0.8)]
+  "
+              >
                 Vietnam International School <br />
                 Counselor Association
               </h1>
