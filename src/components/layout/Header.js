@@ -56,40 +56,25 @@ export default function HeaderBanner() {
   return (
     <>
       <style jsx global>{`
-        /* Load-in */
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(22px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.96); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        /* Calm progress */
-        @keyframes gentlePulse {
-          0% { width: 60%; }
-          50% { width: 80%; }
-          100% { width: 60%; }
-        }
-        /* Hovers */
-        .card-hover { transition: transform 300ms ease, box-shadow 300ms ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+        @keyframes gentlePulse { 0% { width: 55%; } 50% { width: 75%; } 100% { width: 55%; } }
+        .card-hover { transition: transform 300ms ease, box-shadow 300ms ease, background-color 300ms ease, border-color 300ms ease; }
         .card-hover:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.42); }
-        .btn-hover { transition: all 180ms ease; }
+        .btn-hover { transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease; }
         .btn-hover:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,0.35); }
       `}</style>
 
       <div className="relative text-white">
-        {/* NAVBAR — gradient opacity restored */}
-        <div className="fixed inset-x-0 top-0 z-[1000] border-b border-white/10 bg-gradient-to-b from-black/80 to-black/50 backdrop-blur-md">
+        {/* NAVBAR */}
+        <div className="fixed inset-x-0 top-0 z-[1000] border-b border-white/10 bg-black/20 backdrop-blur-md">
           <div className="relative flex h-16 items-center px-4 md:px-6">
-            {/* Far-left VISCA */}
             <div className="flex-none">
               <div className="rounded-md bg-neutral-900/95 px-3 py-2 border border-white/10 shadow-sm">
                 <span className="text-white font-bold tracking-widest text-xs">VISCA</span>
               </div>
             </div>
 
-            {/* Centered nav */}
             <nav
               ref={containerRef}
               className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8"
@@ -116,19 +101,29 @@ export default function HeaderBanner() {
               })}
             </nav>
 
-            {/* Far-right Contact */}
+            <button
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              className="md:hidden rounded-xl border border-white/15 bg-black/80 px-3 py-2 hover:bg-black/85 transition ml-3"
+            >
+              <span className="sr-only">Open menu</span>
+              <div className="space-y-1.5">
+                <span className="block h-0.5 w-5 bg-white" />
+                <span className="block h-0.5 w-5 bg-white" />
+                <span className="block h-0.5 w-5 bg-white" />
+              </div>
+            </button>
+
             <div className="flex-none ml-auto">
               <ContactDialog asChild>
-                <button
-                  className="btn-hover inline-flex items-center justify-center rounded-full border border-white/15 bg-black/60 px-5 py-2 text-sm font-medium text-white/90 shadow-md backdrop-blur hover:border-white/35 hover:text-white"
-                >
+                <button className="btn-hover inline-flex items-center justify-center rounded-full border border-white/15 bg-black/60 px-5 py-2 text-sm font-medium text-white/90 shadow-md backdrop-blur hover:border-white/35 hover:text-white">
                   Contact
                 </button>
               </ContactDialog>
             </div>
           </div>
 
-          {/* Mobile menu */}
           {open && (
             <div id="mobile-nav" className="md:hidden border-t border-white/10 bg-black/95 backdrop-blur-md z-[1000]">
               <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4">
@@ -163,7 +158,6 @@ export default function HeaderBanner() {
 
         {/* HERO */}
         <section className="relative pt-16 min-h-screen overflow-hidden">
-          {/* Background */}
           <div
             className="absolute inset-0 bg-center bg-no-repeat bg-cover"
             style={{
@@ -176,23 +170,24 @@ export default function HeaderBanner() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 lg:py-24">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              {/* LEFT — compact */}
-              <div className="space-y-5 max-w-lg" style={{ animation: "fadeInUp .7s ease-out" }}>
+              {/* LEFT */}
+              <div className="space-y-6 max-w-xl" style={{ animation: "fadeInUp .7s ease-out" }}>
                 <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
                   <span className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
-                    Vietnam International{" "}
+                    Vietnam International
                   </span>
+                  <br /> {/* force new line here */}
                   <span className="bg-gradient-to-r from-blue-100 via-white to-blue-100 bg-clip-text text-transparent">
-                    School Counselor{" "}
+                    <span className="whitespace-nowrap">School&nbsp;Counselor</span>{" "}
                   </span>
                   <span className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
                     Association
                   </span>
                 </h1>
 
-                <p className="text-base md:text-lg text-white/85 leading-relaxed">
-                  A professional network for school counselors in Vietnam — share resources,
-                  host events, and strengthen student support.
+                <p className="text-base md:text-lg text-white/90 leading-relaxed mt-2">
+                  Connecting universities to counselors across Hanoi to share resources plan impactful
+                  events, and support every student  <br></br>with consistent, high-quality guidance.
                 </p>
 
                 <div className="flex flex-wrap gap-3 pt-1">
@@ -211,14 +206,15 @@ export default function HeaderBanner() {
                 </div>
               </div>
 
-              {/* RIGHT — ORIGINAL ORDER KEPT */}
+              {/* RIGHT — Featured and At a glance */}
               <div className="grid grid-cols-2 gap-4 lg:gap-5" style={{ animation: "scaleIn .6s ease-out .05s both" }}>
-                {/* Featured Event (full width) */}
-                <div className="col-span-2 rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-2xl p-5 card-hover">
+                {/* Featured */}
+                <div className="col-span-2 rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-2xl p-5 relative overflow-hidden card-hover">
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl" />
                   <div className="flex items-start justify-between">
                     <div>
-                      <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">Featured</div>
-                      <h3 className="mt-1 text-lg font-semibold tracking-tight">Counselor Summit 2025</h3>
+                      <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">Featured Events</div>
+                      <h3 className="mt-1 text-lg font-semibold tracking-tight">Hanoi University Fair 2025</h3>
                     </div>
                     <div className="text-right">
                       <div className="inline-flex items-center gap-1 rounded-md bg-black/60 px-2 py-1 text-[11px] border border-white/10">
@@ -230,55 +226,18 @@ export default function HeaderBanner() {
                   <p className="mt-3 text-sm text-white/90">
                     Workshops, networking, and best-practice sharing nationwide.
                   </p>
-                  {/* View details + Directions (restored) */}
                   <div className="mt-4 flex items-center gap-3">
-                    <Link
-                      href="/events"
-                      className="btn-hover rounded-md border border-white/25 bg-white/20 px-3 py-1.5 text-xs font-medium hover:bg-white/30"
-                    >
+                    <Link href="/events" className="btn-hover rounded-md border border-white/25 bg-white/20 px-3 py-1.5 text-xs font-medium hover:bg-white/30">
                       View details
                     </Link>
-                    <Link
-                      href="/locations"
-                      className="btn-hover rounded-md border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-medium hover:bg-black/60"
-                    >
+                    <Link href="/locations" className="btn-hover rounded-md border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-medium hover:bg-black/60">
                       Directions
                     </Link>
                   </div>
                 </div>
 
-                {/* Counselor Network (left small) */}
-                <div className="rounded-xl overflow-hidden border border-white/25 shadow-xl relative group card-hover">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    style={{
-                      backgroundImage:
-                        "url('https://media.licdn.com/dms/image/v2/D5610AQEOeXbumiQLFg/image-shrink_800/B56ZYVETrvGsAc-/0/1744110173638?e=2147483647&v=beta&t=3lXvLQe8NzI7gg4AlezzSIcL2luLaHKLqydm3kWMe-s')",
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/25" />
-                  <div className="relative p-3">
-                    <div className="text-[11px] uppercase tracking-[0.16em] text-white/85">Community</div>
-                    <div className="text-sm font-semibold tracking-tight">Counselor Network</div>
-                  </div>
-                </div>
-
-                {/* Quick Links (right small) */}
-                <div className="rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-xl p-4 flex flex-col gap-2 card-hover">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-white/70 mb-1">Quick Links</div>
-                  <Link href="/information" className="btn-hover rounded-md bg-black/45 border border-white/10 px-3 py-2 text-xs hover:bg-black/60">
-                    Guides
-                  </Link>
-                  <Link href="/events" className="btn-hover rounded-md bg-black/45 border border-white/10 px-3 py-2 text-xs hover:bg-black/60">
-                    Workshops
-                  </Link>
-                  <Link href="/locations" className="btn-hover rounded-md bg-black/45 border border-white/10 px-3 py-2 text-xs hover:bg-black/60">
-                    Schools
-                  </Link>
-                </div>
-
-                {/* At a glance — HALF WIDTH (right-most small if it lands there) */}
-                <div className="rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-xl p-4 card-hover">
+                {/* At a glance */}
+                <div className="col-span-1 col-start-2 rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-xl p-4 card-hover">
                   <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">At a glance</div>
                   <div className="mt-3 grid grid-cols-3 gap-3 text-center">
                     <div>
@@ -295,14 +254,10 @@ export default function HeaderBanner() {
                     </div>
                   </div>
                   <div className="mt-3 h-1 w-full bg-white/15 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-white/70 rounded-full"
-                      style={{ animation: "gentlePulse 7s ease-in-out infinite" }}
-                    />
+                    <div className="h-full bg-white/70 rounded-full" style={{ animation: "gentlePulse 8s ease-in-out infinite" }} />
                   </div>
                 </div>
               </div>
-              {/* /RIGHT */}
             </div>
           </div>
         </section>

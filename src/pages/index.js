@@ -84,7 +84,7 @@ export default function Home({ schools }) {
           </div>
         </main>
         <AdDialog />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   )

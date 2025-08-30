@@ -79,8 +79,8 @@ export default function HeaderBanner() {
       `}</style>
 
       <div className="relative text-white">
-        {/* NAVBAR (logo left, contact right, centered nav) */}
-        <div className="fixed inset-x-0 top-0 z-[1000] border-b border-white/10 bg-black/70 backdrop-blur-md">
+        {/* NAVBAR with more opacity */}
+        <div className="fixed inset-x-0 top-0 z-[1000] border-b border-white/10 bg-black/20 backdrop-blur-md">
           <div className="relative flex h-16 items-center px-4 md:px-6">
             {/* VISCA far-left */}
             <div className="flex-none">
@@ -177,7 +177,7 @@ export default function HeaderBanner() {
 
         {/* HERO */}
         <section className="relative pt-16 min-h-screen overflow-hidden">
-          {/* Background image (restored) */}
+          {/* Background image */}
           <div
             className="absolute inset-0 bg-center bg-no-repeat bg-cover"
             style={{
@@ -226,7 +226,7 @@ export default function HeaderBanner() {
                 </div>
               </div>
 
-              {/* RIGHT — compact, balanced; At a glance is HALF width */}
+              {/* RIGHT - Only Featured Event and At a Glance */}
               <div className="grid grid-cols-2 gap-4 lg:gap-5" style={{ animation: "scaleIn .6s ease-out .05s both" }}>
                 {/* Featured Event (full width) */}
                 <div className="col-span-2 rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-2xl p-5 relative overflow-hidden card-hover">
@@ -256,20 +256,10 @@ export default function HeaderBanner() {
                   </div>
                 </div>
 
-                {/* Row 2: Quick Links (left) + At a glance (right, HALF) */}
-                <div className="rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-xl p-4 flex flex-col gap-2 card-hover">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-white/70 mb-1">Quick Links</div>
-                  <Link href="/information" className="btn-hover rounded-md bg-black/45 border border-white/10 px-3 py-2 text-xs hover:bg-black/60">
-                    Guides
-                  </Link>
-                  <Link href="/events" className="btn-hover rounded-md bg-black/45 border border-white/10 px-3 py-2 text-xs hover:bg-black/60">
-                    Workshops
-                  </Link>
-                  <Link href="/locations" className="btn-hover rounded-md bg-black/45 border border-white/10 px-3 py-2 text-xs hover:bg-black/60">
-                    Schools
-                  </Link>
-                </div>
+                {/* Empty space on left */}
+                <div></div>
 
+                {/* At a glance (right side only, half width) */}
                 <div className="rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-xl p-4 card-hover">
                   <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">At a glance</div>
                   <div className="mt-3 grid grid-cols-3 gap-3 text-center">
@@ -294,24 +284,7 @@ export default function HeaderBanner() {
                     />
                   </div>
                 </div>
-
-                {/* Row 3: Counselor Network full width (as requested swap outcome) */}
-                <div className="col-span-2 rounded-xl overflow-hidden border border-white/25 shadow-xl relative group card-hover">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    style={{
-                      backgroundImage:
-                        "url('https://media.licdn.com/dms/image/v2/D5610AQEOeXbumiQLFg/image-shrink_800/B56ZYVETrvGsAc-/0/1744110173638?e=2147483647&v=beta&t=3lXvLQe8NzI7gg4AlezzSIcL2luLaHKLqydm3kWMe-s')",
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/25 transition-colors duration-300 group-hover:bg-black/30" />
-                  <div className="relative p-3">
-                    <div className="text-[11px] uppercase tracking-[0.16em] text-white/85">Community</div>
-                    <div className="text-sm font-semibold tracking-tight">Counselor Network</div>
-                  </div>
-                </div>
               </div>
-              {/* /RIGHT */}
             </div>
           </div>
         </section>
