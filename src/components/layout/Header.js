@@ -56,9 +56,31 @@ export default function HeaderBanner() {
   return (
     <>
       <style jsx global>{`
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scaleIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
-        @keyframes gentlePulse { 0% { width: 55%; } 50% { width: 75%; } 100% { width: 55%; } }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(22px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+          from { opacity: 0; transform: scale(0.96); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+        @keyframes gentlePulse {
+          0% { width: 55%; }
+          50% { width: 75%; }
+          100% { width: 55%; }
+        }
+
+        /* Calm breathing pill (single capsule) */
+        @keyframes breathPill {
+          0%, 100% { opacity: .35; transform: scaleX(0.95) scaleY(1.0); }
+          50%      { opacity: .85; transform: scaleX(1.0) scaleY(1.08); }
+        }
+        .breathing {
+          animation: breathPill 6.5s ease-in-out infinite;
+          transform-origin: center;
+          will-change: transform, opacity;
+        }
+
         .card-hover { transition: transform 300ms ease, box-shadow 300ms ease, background-color 300ms ease, border-color 300ms ease; }
         .card-hover:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.42); }
         .btn-hover { transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease; }
@@ -161,8 +183,7 @@ export default function HeaderBanner() {
           <div
             className="absolute inset-0 bg-center bg-no-repeat bg-cover"
             style={{
-              backgroundImage:
-                "url('https://statics.vinpearl.com/thap-rua-ho-guom-5_1691857514.jpg')",
+              backgroundImage: "url('https://statics.vinpearl.com/thap-rua-ho-guom-5_1691857514.jpg')",
               backgroundPosition: "center 80%",
             }}
           />
@@ -176,7 +197,7 @@ export default function HeaderBanner() {
                   <span className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
                     Vietnam International
                   </span>
-                  <br /> {/* force new line here */}
+                  <br />{" "}
                   <span className="bg-gradient-to-r from-blue-100 via-white to-blue-100 bg-clip-text text-transparent">
                     <span className="whitespace-nowrap">School&nbsp;Counselor</span>{" "}
                   </span>
@@ -184,6 +205,11 @@ export default function HeaderBanner() {
                     Association
                   </span>
                 </h1>
+
+                {/* CALM BREATHING PILL (single capsule, no layers) */}
+                <div className="mt-3 w-48 max-w-xs">
+                  <div className="h-1.5 w-full rounded-full bg-neutral-200/40 breathing" />
+                </div>
 
                 <p className="text-base md:text-lg text-white/90 leading-relaxed mt-2">
                   Connecting universities to counselors across Hanoi to share resources plan impactful
@@ -209,55 +235,68 @@ export default function HeaderBanner() {
               {/* RIGHT — Featured and At a glance */}
               <div className="grid grid-cols-2 gap-4 lg:gap-5" style={{ animation: "scaleIn .6s ease-out .05s both" }}>
                 {/* Featured */}
-                <div className="col-span-2 rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-2xl p-5 relative overflow-hidden card-hover">
-                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/15 blur-2xl" />
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">Featured Events</div>
-                      <h3 className="mt-1 text-lg font-semibold tracking-tight">Hanoi University Fair 2025</h3>
-                    </div>
-                    <div className="text-right">
-                      <div className="inline-flex items-center gap-1 rounded-md bg-black/60 px-2 py-1 text-[11px] border border-white/10">
-                        <span>Sep</span>
-                        <span className="font-bold">20</span>
+                <div className="col-span-2 isolate relative overflow-hidden rounded-xl border border-white/25 bg-neutral-800/90 backdrop-blur-xl shadow-2xl p-5 card-hover
+                                after:content-[''] after:absolute after:inset-0 after:rounded-xl after:bg-neutral-900/20">
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10 blur-2xl z-0" />
+                  <div className="relative z-10 filter drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">Featured Events</div>
+                        <h3 className="mt-1 text-lg font-semibold tracking-tight">Hanoi University Fair 2025</h3>
+                      </div>
+                      <div className="text-right">
+                        <div className="inline-flex items-center gap-1 rounded-md bg-black/70 px-2.5 py-1.5 text-[12px] border border-white/10">
+                          <span>Oct</span>
+                          <span className="font-bold">01</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <p className="mt-3 text-sm text-white/90">
-                    Workshops, networking, and best-practice sharing nationwide.
-                  </p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <Link href="/events" className="btn-hover rounded-md border border-white/25 bg-white/20 px-3 py-1.5 text-xs font-medium hover:bg-white/30">
-                      View details
-                    </Link>
-                    <Link href="/locations" className="btn-hover rounded-md border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-medium hover:bg-black/60">
-                      Directions
-                    </Link>
+                    <p className="mt-3 text-sm text-white/90">
+                      Connect with counselors, students, and parents at the summit.
+                    </p>
+                    <div className="mt-4 flex items-center gap-3">
+                      <Link
+                        href="/events"
+                        className="btn-hover rounded-2xl border border-white/25 bg-neutral-700/70 px-3.5 py-2 text-sm font-medium hover:bg-neutral-700/80"
+                      >
+                        View details
+                      </Link>
+                      <Link
+                        href="/locations"
+                        className="btn-hover rounded-2xl border border-white/15 bg-black/60 px-3.5 py-2 text-sm font-medium hover:bg-black/70"
+                      >
+                        Directions
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
                 {/* At a glance */}
-                <div className="col-span-1 col-start-2 rounded-xl border border-white/25 bg-white/20 backdrop-blur-xl shadow-xl p-4 card-hover">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">At a glance</div>
-                  <div className="mt-3 grid grid-cols-3 gap-3 text-center">
-                    <div>
-                      <div className="text-base font-bold">50+</div>
-                      <div className="text-[10px] uppercase tracking-wide text-white/70">Schools</div>
+                <div className="col-span-1 col-start-2 isolate relative overflow-hidden rounded-xl border border-white/25 bg-neutral-800/90 backdrop-blur-xl shadow-xl p-4 card-hover
+                                after:content-[''] after:absolute after:inset-0 after:rounded-xl after:bg-neutral-900/20">
+                  <div className="relative z-10 filter drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
+                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">At a glance</div>
+                    <div className="mt-3 grid grid-cols-3 gap-3 text-center">
+                      <div>
+                        <div className="text-base font-bold">10+</div>
+                        <div className="text-[10px] uppercase tracking-wide text-white/70">Schools</div>
+                      </div>
+                      <div>
+                        <div className="text-base font-bold">30+</div>
+                        <div className="text-[10px] uppercase tracking-wide text-white/70">Counselors</div>
+                      </div>
+                      <div>
+                        <div className="text-base font-bold">50+</div>
+                        <div className="text-[10px] uppercase tracking-wide text-white/70">Events</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-base font-bold">200+</div>
-                      <div className="text-[10px] uppercase tracking-wide text-white/70">Counselors</div>
+                    <div className="mt-3 h-1 w-full bg-white/15 rounded-full overflow-hidden">
+                      <div className="h-full bg-white/80 rounded-full" style={{ animation: "gentlePulse 8s ease-in-out infinite" }} />
                     </div>
-                    <div>
-                      <div className="text-base font-bold">100+</div>
-                      <div className="text-[10px] uppercase tracking-wide text-white/70">Events</div>
-                    </div>
-                  </div>
-                  <div className="mt-3 h-1 w-full bg-white/15 rounded-full overflow-hidden">
-                    <div className="h-full bg-white/70 rounded-full" style={{ animation: "gentlePulse 8s ease-in-out infinite" }} />
                   </div>
                 </div>
               </div>
+              {/* END RIGHT */}
             </div>
           </div>
         </section>
