@@ -11,9 +11,9 @@ export default function HeaderBanner() {
   const navLinks = useMemo(
     () => [
       { href: "/", label: "Home" },
-      { href: "/events", label: "Events" },
-      { href: "/locations", label: "Locations" },
       { href: "/information", label: "Information" },
+      { href: "/locations", label: "Locations" },
+      { href: "/events", label: "Events" },
     ],
     []
   );
