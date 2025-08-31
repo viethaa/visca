@@ -1,13 +1,17 @@
 "use client";
 
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export default function AdDialog() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(true); // keep auto-open on load
+
+  // Allow other components (like HeaderBanner) to open this dialog on demand
+  React.useEffect(() => {
+    const handler = () => setOpen(true);
+    window.addEventListener("ad-dialog:open", handler);
+    return () => window.removeEventListener("ad-dialog:open", handler);
+  }, []);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

@@ -212,7 +212,7 @@ export default function HeaderBanner() {
                 </div>
 
                 <p className="text-base md:text-lg text-white/90 leading-relaxed mt-2">
-                  Connecting universities to counselors across Hanoi to share resources plan impactful
+                  Connecting universities to counselors across Hanoi to share resources, plan impactful
                   events, and support every student  <br></br>with consistent, high-quality guidance.
                 </p>
 
