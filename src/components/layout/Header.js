@@ -4,14 +4,27 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import ContactDialog from "../ContactDialog";
 import { usePathname } from "next/navigation";
+import AdDialog from "../AdDialog";
 
 export default function HeaderBanner() {
+  const scrollToMap = () => {
+    const mapContainer = document.getElementById('map-container');
+    if (mapContainer) {
+      mapContainer.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   const [open, setOpen] = useState(false);
+
+  const [adDialogOpen, setAdDialogOpen] = useState(true);
 
   const navLinks = useMemo(
     () => [
       { href: "/", label: "Home" },
-      { href: "/information", label: "Information" },
+      { href: "#information", label: "Information", isScroll: true },
       { href: "/locations", label: "Locations" },
       { href: "/events", label: "Events" },
     ],
@@ -107,6 +120,27 @@ export default function HeaderBanner() {
               />
               {navLinks.map((l) => {
                 const isActive = l.href === activeHref;
+
+                if (l.isScroll) {
+                  return (
+                    <button
+                      key={l.href}
+                      onClick={scrollToMap}
+                      className="px-2"
+                    >
+                      <span
+                        ref={(el) => (itemRefs.current[l.href] = el)}
+                        className={[
+                          "text-sm font-medium tracking-wide transition-colors cursor-pointer",
+                          isActive ? "text-white font-semibold" : "text-white/80 hover:text-white",
+                        ].join(" ")}
+                      >
+                        {l.label}
+                      </span>
+                    </button>
+                  );
+                }
+
                 return (
                   <Link key={l.href} href={l.href} className="px-2">
                     <span
@@ -151,6 +185,25 @@ export default function HeaderBanner() {
               <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4">
                 {navLinks.map((l) => {
                   const isActive = l.href === activeHref;
+
+                  if (l.isScroll) {
+                    return (
+                      <button
+                        key={l.href}
+                        onClick={() => {
+                          scrollToMap();
+                          setOpen(false);
+                        }}
+                        className={[
+                          "rounded-lg px-3 py-2 text-sm font-medium transition-colors text-left w-full",
+                          isActive ? "text-white" : "text-white/85 hover:text-white",
+                        ].join(" ")}
+                      >
+                        {l.label}
+                      </button>
+                    );
+                  }
+
                   return (
                     <Link
                       key={l.href}
@@ -178,7 +231,6 @@ export default function HeaderBanner() {
           )}
         </div>
 
-        {/* HERO */}
         <section className="relative pt-16 min-h-screen overflow-hidden">
           <div
             className="absolute inset-0 bg-center bg-no-repeat bg-cover"
@@ -191,7 +243,6 @@ export default function HeaderBanner() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 lg:py-24">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              {/* LEFT */}
               <div className="space-y-6 max-w-xl" style={{ animation: "fadeInUp .7s ease-out" }}>
                 <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
                   <span className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
@@ -206,7 +257,6 @@ export default function HeaderBanner() {
                   </span>
                 </h1>
 
-                {/* CALM BREATHING PILL (single capsule, no layers) */}
                 <div className="mt-3 w-48 max-w-xs">
                   <div className="h-1.5 w-full rounded-full bg-neutral-200/40 breathing" />
                 </div>
@@ -232,9 +282,7 @@ export default function HeaderBanner() {
                 </div>
               </div>
 
-              {/* RIGHT — Featured and At a glance */}
               <div className="grid grid-cols-2 gap-4 lg:gap-5" style={{ animation: "scaleIn .6s ease-out .05s both" }}>
-                {/* Featured */}
                 <div className="col-span-2 isolate relative overflow-hidden rounded-xl border border-white/25 bg-neutral-800/90 backdrop-blur-xl shadow-2xl p-5 card-hover
                                 after:content-[''] after:absolute after:inset-0 after:rounded-xl after:bg-neutral-900/20">
                   <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10 blur-2xl z-0" />
@@ -255,12 +303,15 @@ export default function HeaderBanner() {
                       Connect with counselors, students, and parents at the summit.
                     </p>
                     <div className="mt-4 flex items-center gap-3">
-                      <Link
-                        href="/events"
+                      {/* <Link
+                        href="/even"
                         className="btn-hover rounded-2xl border border-white/25 bg-neutral-700/70 px-3.5 py-2 text-sm font-medium hover:bg-neutral-700/80"
                       >
                         View details
-                      </Link>
+                      </Link> */}
+                      <p onClick={() => setAdDialogOpen(true)} className="btn-hover rounded-2xl border border-white/25 bg-neutral-700/70 px-3.5 py-2 text-sm font-medium hover:bg-neutral-700/80>">
+                        View details
+                      </p>
                       <Link
                         href="/locations"
                         className="btn-hover rounded-2xl border border-white/15 bg-black/60 px-3.5 py-2 text-sm font-medium hover:bg-black/70"
@@ -271,7 +322,7 @@ export default function HeaderBanner() {
                   </div>
                 </div>
 
-                {/* At a glance */}
+
                 <div className="col-span-1 col-start-2 isolate relative overflow-hidden rounded-xl border border-white/25 bg-neutral-800/90 backdrop-blur-xl shadow-xl p-4 card-hover
                                 after:content-[''] after:absolute after:inset-0 after:rounded-xl after:bg-neutral-900/20">
                   <div className="relative z-10 filter drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
@@ -296,11 +347,12 @@ export default function HeaderBanner() {
                   </div>
                 </div>
               </div>
-              {/* END RIGHT */}
             </div>
           </div>
         </section>
       </div>
+      <AdDialog open={adDialogOpen} onOpenChange={setAdDialogOpen} />
     </>
   );
 }
+

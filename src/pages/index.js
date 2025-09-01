@@ -40,7 +40,7 @@ export default function Home({ schools }) {
       </Head>
       <div className='flex min-h-screen flex-col'>
         <Header />
-        <main className='flex-grow p-4 sm:p-8'>
+        <main id="map-container" className='flex-grow p-4 sm:p-8'>
           {/* <div className='flex flex-row m-4 sm:m-8 justify-center gap-4'>
             <Link
               href={'/schools'}
@@ -77,6 +77,7 @@ export default function Home({ schools }) {
               </div>
 
               <MapContainer schools={schools} />
+
               <div className='mx-auto w-full'>
                 <List schools={schools} />
               </div>

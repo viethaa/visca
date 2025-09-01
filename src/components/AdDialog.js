@@ -3,18 +3,22 @@
 import React from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
-export default function AdDialog() {
-  const [open, setOpen] = React.useState(true); // keep auto-open on load
+export default function AdDialog({ open, onOpenChange }) {
+  const [internalOpen, setInternalOpen] = React.useState(false);
 
-  // Allow other components (like HeaderBanner) to open this dialog on demand
+  // Use controlled state if props are provided, otherwise use internal state
+  const isOpen = open !== undefined ? open : internalOpen;
+  const setIsOpen = onOpenChange || setInternalOpen;
+
+  // Allow other components to open this dialog on demand via custom event
   React.useEffect(() => {
-    const handler = () => setOpen(true);
+    const handler = () => setIsOpen(true);
     window.addEventListener("ad-dialog:open", handler);
     return () => window.removeEventListener("ad-dialog:open", handler);
-  }, []);
+  }, [setIsOpen]);
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent
         className="
           w-full sm:max-w-[500px] p-0

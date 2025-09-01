@@ -16,7 +16,7 @@ export default function ContactDialog() {
         Contact
       </DialogTrigger>
 
-      <DialogContent className="max-w-lg bg-gray-950/80 backdrop-blur-2xl border-[4px] border-gray-900 text-white rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.9)]">
+      <DialogContent className="max-w-lg bg-gray-950 backdrop-blur-2xl border-[4px] border-black text-white rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.9)]">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-white mb-2">
             Get in Touch
