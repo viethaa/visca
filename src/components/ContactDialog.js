@@ -22,7 +22,7 @@ export default function ContactDialog() {
             Get in Touch
           </DialogTitle>
           <DialogDescription className="text-gray-300 leading-relaxed">
-            Have a question or want to work together? We'd love to hear from you.
+            Have a question or want to work together? We&apos;d love to hear from you.
           </DialogDescription>
         </DialogHeader>
 

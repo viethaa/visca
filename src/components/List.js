@@ -22,13 +22,13 @@ export default function List({ schools }) {
       {schools.map((school) => (
         <div
           key={school.name}
-          className="group relative bg-white/[0.03] backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] shadow-xl hover:shadow-2xl overflow-hidden flex flex-col h-full"
+          className="group relative bg-white/[0.03] backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] shadow-xl hover:shadow-2xl overflow-hidden"
         >
           {/* Gradient overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.02] via-transparent to-purple-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
 
-          {/* Main card content - flex container */}
-          <div className="relative z-10 p-6 flex flex-col flex-grow">
+          {/* Main card content */}
+          <div className="relative z-10 p-6">
             {/* Header */}
             <div className="flex items-start gap-4 mb-6">
               <div className="relative">
@@ -43,9 +43,9 @@ export default function List({ schools }) {
                 <h3 className="text-lg font-semibold text-white leading-tight mb-2 group-hover:text-blue-100 transition-colors duration-300">
                   {school.name}
                 </h3>
-                <div className="flex items-start gap-2 text-gray-300 text-xs">
-                  <MapPin className="h-3 w-3 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span className="break-words leading-relaxed">{school.address}</span>
+                <div className="flex items-center gap-2 text-gray-300 text-sm">
+                  <MapPin className="h-4 w-4 text-blue-400 flex-shrink-0" />
+                  <span className="truncate">{school.address}</span>
                 </div>
               </div>
             </div>
@@ -57,25 +57,20 @@ export default function List({ schools }) {
               </div>
             </div>
 
-            {/* Spacer to push button to bottom */}
-            <div className="flex-grow"></div>
-
-            {/* Expand/Collapse Button - Always at bottom */}
-            <div className="mt-auto">
-              <button
-                onClick={() => toggleCard(school.name)}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white text-sm font-medium transition-all duration-300 group/btn"
-              >
-                <span>
-                  {expandedCard === school.name ? 'Hide Details' : 'View Details'}
-                </span>
-                <ChevronRight
-                  className={`h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1 ${
-                    expandedCard === school.name ? 'rotate-90' : ''
-                  }`}
-                />
-              </button>
-            </div>
+            {/* Expand/Collapse Button */}
+            <button
+              onClick={() => toggleCard(school.name)}
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white text-sm font-medium transition-all duration-300 group/btn"
+            >
+              <span>
+                {expandedCard === school.name ? 'Hide Details' : 'View Details'}
+              </span>
+              <ChevronRight
+                className={`h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1 ${
+                  expandedCard === school.name ? 'rotate-90' : ''
+                }`}
+              />
+            </button>
 
             {/* Expanded Details */}
             <div className={`overflow-hidden transition-all duration-500 ${
@@ -88,15 +83,15 @@ export default function List({ schools }) {
                       key={index}
                       className={`p-3 rounded-xl bg-gradient-to-r ${item.color} backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300`}
                     >
-                      <div className="flex items-start gap-3">
-                        <div className="p-1.5 rounded-lg bg-white/10 flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="p-1.5 rounded-lg bg-white/10">
                           <item.icon className="h-3.5 w-3.5 text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-xs font-medium text-gray-300 uppercase tracking-wide mb-1">
                             {item.label}
                           </div>
-                          <div className="text-sm text-white break-words leading-relaxed">
+                          <div className="text-sm text-white truncate">
                             {item.value}
                           </div>
                         </div>

@@ -25,8 +25,8 @@ export default function HeaderBanner() {
     () => [
       { href: "/", label: "Home" },
       { href: "#information", label: "Information", isScroll: true },
-      { href: "/locations", label: "Locations" },
-      { href: "/events", label: "Events" },
+      { href: "#locations", label: "Locations", isScroll: true },
+      { href: "#events", label: "Events" },
     ],
     []
   );
@@ -245,14 +245,14 @@ export default function HeaderBanner() {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
               <div className="space-y-6 max-w-xl" style={{ animation: "fadeInUp .7s ease-out" }}>
                 <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
-                  <span className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
+                  <span className="">
                     Vietnam International
                   </span>
                   <br />{" "}
-                  <span className="bg-gradient-to-r from-blue-100 via-white to-blue-100 bg-clip-text text-transparent">
+                  <span className="">
                     <span className="whitespace-nowrap">School&nbsp;Counselor</span>{" "}
                   </span>
-                  <span className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
+                  <span className="">
                     Association
                   </span>
                 </h1>
@@ -267,12 +267,11 @@ export default function HeaderBanner() {
                 </p>
 
                 <div className="flex flex-wrap gap-3 pt-1">
-                  <Link
-                    href="/events"
-                    className="btn-hover rounded-lg border border-white/30 bg-white/20 px-6 py-3 text-sm font-medium text-white hover:bg-white/30 hover:border-white/50 backdrop-blur-md shadow-lg"
+                  <p onClick={() => setAdDialogOpen(true)}
+                    className=" btn-hover rounded-lg border border-white/30 bg-white/20 px-6 py-3 text-sm font-medium text-white hover:bg-white/30 hover:border-white/50 backdrop-blur-md shadow-lg"
                   >
                     Explore Events
-                  </Link>
+                  </p>
                   <Link
                     href="/information"
                     className="btn-hover rounded-lg border border-white/30 bg-white/20 px-6 py-3 text-sm font-medium text-white hover:bg-white/30 hover:border-white/50 backdrop-blur-md shadow-lg"

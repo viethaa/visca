@@ -61,6 +61,9 @@ export default function Home({ schools }) {
                   Association - Hanoi (VISCA).
                 </p>
               </div>
+              <div className='mx-auto w-full'>
+                <List schools={schools} />
+              </div>
               <div className='flex gap-6'>
                 <div className='flex items-center gap-1.5'>
                   <div className='w-4 h-4 rounded bg-black'></div>
@@ -77,10 +80,6 @@ export default function Home({ schools }) {
               </div>
 
               <MapContainer schools={schools} />
-
-              <div className='mx-auto w-full'>
-                <List schools={schools} />
-              </div>
             </div>
           </div>
         </main>
