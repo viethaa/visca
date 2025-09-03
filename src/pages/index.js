@@ -40,7 +40,7 @@ export default function Home({ schools }) {
       </Head>
       <div className='flex min-h-screen flex-col'>
         <Header />
-        <main id="map-container" className='flex-grow p-4 sm:p-8'>
+        <main id="map-container" className='flex-grow p-4 sm:p-8 bg-gradient-to-tr from-black/90 via-black/85 to-black/80 text-white'>
           {/* <div className='flex flex-row m-4 sm:m-8 justify-center gap-4'>
             <Link
               href={'/schools'}
