@@ -8,27 +8,56 @@ import { fetchSchools } from '@/functions'
 import Image from 'next/image'
 import AdDialog from '@/components/AdDialog'
 
-export async function getStaticProps() {
-  const schools = await fetchSchools(process.env.SPREADSHEET_ID)
+// export async function getStaticProps() {
+//   const schools = await fetchSchools(process.env.SPREADSHEET_ID)
 
-  //order schools by name
-  schools.sort((a, b) => {
-    if (a.name < b.name) {
-      return -1
+//   //order schools by name
+//   schools.sort((a, b) => {
+//     if (a.name < b.name) {
+//       return -1
+//     }
+//     if (a.name > b.name) {
+//       return 1
+//     }
+//     return 0
+//   })
+
+//   return {
+//     props: {
+//       schools,
+//     },
+
+//     revalidate: 60,
+//   }
+// }
+
+export async function getStaticProps() {
+  let schools = [];
+
+  try {
+    const SHEET_ID = process.env.SPREADSHEET_ID;
+
+    if (typeof SHEET_ID === "string" && SHEET_ID.length > 0) {
+      // Only call the sheets fetcher when we truly have an ID
+      schools = await fetchSchools(SHEET_ID);
+    } else {
+      // Fallback when env is missing on Netlify
+      schools = Array.isArray(data?.schools) ? data.schools : (Array.isArray(data) ? data : []);
     }
-    if (a.name > b.name) {
-      return 1
-    }
-    return 0
-  })
+  } catch (err) {
+    // Final safety net: never fail the build
+    schools = Array.isArray(data?.schools) ? data.schools : (Array.isArray(data) ? data : []);
+  }
+
+  // Normalize + sort safely
+  schools = (Array.isArray(schools) ? schools : [])
+    .filter(Boolean)
+    .sort((a, b) => String(a?.name || "").localeCompare(String(b?.name || "")));
 
   return {
-    props: {
-      schools,
-    },
-
+    props: { schools },
     revalidate: 60,
-  }
+  };
 }
 
 export default function Home({ schools }) {
