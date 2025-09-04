@@ -26,7 +26,7 @@ export default function HeaderBanner() {
       { href: "/", label: "Home" },
       { href: "#information", label: "Information", isScroll: true },
       { href: "#locations", label: "Locations", isScroll: true },
-      { href: "#events", label: "Events" },
+      { href: "#events", label: "University Visits" },
     ],
     []
   );

@@ -1,41 +1,74 @@
 import React from 'react'
+import { ExternalLink, User, Calendar, Globe } from 'lucide-react'
 
 export default function Links({ school }) {
   const links = [
     {
-      name: 'Profile',
-      href: school.profile,
+      key: 'profile',
+      url: school?.profile,
+      icon: User,
+      label: 'Profile',
+      color: 'hover:bg-blue-600/20 hover:border-blue-500/40'
     },
     {
-      name: 'Website',
-      href: school.website,
+      key: 'website',
+      url: school?.website,
+      icon: Globe,
+      label: 'Website',
+      color: 'hover:bg-green-600/20 hover:border-green-500/40'
     },
     {
-      name: 'Calendar',
-      href: school.calendar,
-    },
+      key: 'calendar',
+      url: school?.calendar,
+      icon: Calendar,
+      label: 'Calendar',
+      color: 'hover:bg-purple-600/20 hover:border-purple-500/40'
+    }
   ]
 
-  return links.map(
-    (link) =>
-      link.href && (
-        <a
-          href={link.href}
-          target='_blank'
-          className='flex gap-0.5 hover:underline cursor-pointer underline-offset-2 flex-row items-center hover:text-black'
-          key={link.name}
-        >
-          {link.name}{' '}
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 16 16'
-            fill='currentColor'
-            className='w-4 h-4'
-          >
-            <path d='M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z' />
-            <path d='M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z' />
-          </svg>
-        </a>
-      )
+  const validLinks = links.filter(link => link.url && link.url.trim() !== '')
+
+  if (validLinks.length === 0) {
+    return null
+  }
+
+  return (
+    <div className="w-full">
+      {/* Grid container for consistent alignment - always shows 3 columns */}
+      <div className="grid grid-cols-3 gap-2 w-full">
+        {/* Always render 3 slots for perfect alignment */}
+        {[0, 1, 2].map((index) => {
+          const link = validLinks[index]
+
+          if (link) {
+            return (
+              <a
+                key={link.key}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group relative flex items-center justify-center px-3 py-2 ${link.bgColor} ${link.hoverColor} border ${link.borderColor} ${link.hoverBorderColor} rounded-lg transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 backdrop-blur-sm min-h-[36px]`}
+                title={`Visit ${school.name} ${link.label}`}
+              >
+                {/* Just the text label - no icons */}
+                <span className={`text-xs font-semibold ${link.textColor} transition-colors duration-300 text-center leading-tight`}>
+                  {link.label}
+                </span>
+
+                {/* Hover glow effect */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </a>
+            )
+          } else {
+            // Empty placeholder to maintain grid alignment
+            return (
+              <div key={`empty-${index}`} className="min-h-[36px] opacity-0 pointer-events-none">
+                <div className="h-full w-full rounded-lg"></div>
+              </div>
+            )
+          }
+        })}
+      </div>
+    </div>
   )
 }
