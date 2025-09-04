@@ -1,33 +1,69 @@
 import React, { useState } from 'react'
-import Map from './Map'
-import { Dialog } from '@headlessui/react'
-import data from '@/data.json'
+import { MapPin, User, Mail, Phone, MessageCircle, Clock, ChevronRight, Copy, Check, Building } from 'lucide-react'
 import Links from './Links'
-import { InfoSheet } from './InfoSheet'
-import { PlaceInfoSheet } from './PlaceInfoSheet'
 
-const links = [
-  {
-    name: 'Profile',
-    href: '#',
-  },
-  {
-    name: 'Website',
-    href: '#',
-  },
-  {
-    name: 'Calendar',
-    href: '#',
-  },
-]
+export default function List({ schools }) {
+  const [expandedCard, setExpandedCard] = useState(null)
+  const [copiedItems, setCopiedItems] = useState({})
 
-export default function MapContainer({ schools }) {
-  const [schoolOpen, setSchoolOpen] = useState(false)
-  const [school, setSchool] = useState({})
-  const [placeOpen, setPlaceOpen] = useState(false)
-  const [place, setPlace] = useState({})
+  const toggleCard = (schoolName) => {
+    setExpandedCard(expandedCard === schoolName ? null : schoolName)
+  }
 
-  console.log(school)
+  const copyToClipboard = async (text, key) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopiedItems(prev => ({ ...prev, [key]: true }))
+      setTimeout(() => {
+        setCopiedItems(prev => ({ ...prev, [key]: false }))
+      }, 2000)
+    } catch (err) {
+      console.error('Failed to copy text: ', err)
+    }
+  }
+
+  const infoItems = (school) => [
+    {
+      icon: User,
+      label: 'Counselor',
+      value: school?.counselor_name,
+      color: 'from-blue-600/30 to-cyan-600/30',
+      copyable: false,
+      truncate: true
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      value: school?.counselor_email,
+      color: 'from-purple-600/30 to-pink-600/30',
+      copyable: true,
+      truncate: true
+    },
+    {
+      icon: Phone,
+      label: 'Phone',
+      value: school?.counselor_phone,
+      color: 'from-emerald-600/30 to-teal-600/30',
+      copyable: false,
+      truncate: true
+    },
+    {
+      icon: MessageCircle,
+      label: 'Contact Point',
+      value: school?.contact_point,
+      color: 'from-orange-600/30 to-red-600/30',
+      copyable: true,
+      truncate: true
+    },
+    {
+      icon: Clock,
+      label: 'Preferred Time',
+      value: school?.preferred_time,
+      color: 'from-indigo-600/30 to-purple-600/30',
+      copyable: false,
+      truncate: false
+    }
+  ]
 
   return (
     <div className='relative'>

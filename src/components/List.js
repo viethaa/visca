@@ -65,7 +65,7 @@ export default function List({ schools }) {
       {schools.map((school) => (
         <div
           key={school.name}
-          className="group relative bg-gray-950/80 backdrop-blur-md rounded-3xl border-2 border-gray-800/60 hover:border-blue-500/40 transition-all duration-500 hover:scale-[1.02] shadow-2xl hover:shadow-blue-500/10 hover:shadow-3xl overflow-hidden"
+          className="group relative bg-black backdrop-blur-md rounded-3xl border-2 border-gray-800/60 hover:border-blue-500/40 transition-all duration-500 hover:scale-[1.02] shadow-2xl hover:shadow-blue-500/10 hover:shadow-3xl overflow-hidden"
         >
           {/* Gradient overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/[0.05] via-purple-600/[0.02] to-cyan-600/[0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
