@@ -7,6 +7,7 @@ import data from '@/data.json'
 import { fetchSchools } from '@/functions'
 import Image from 'next/image'
 import AdDialog from '@/components/AdDialog'
+import { ChevronRight } from 'lucide-react'
 
 // Keep spreadsheet order: DO NOT SORT.
 export async function getStaticProps() {
@@ -43,43 +44,54 @@ export default function Home({ schools }) {
       <Head>
         <title>Home | VISCA</title>
       </Head>
+
       <div className="flex min-h-screen flex-col">
         <Header />
+
         <main
           id="map-container"
-          className="flex-grow p-4 sm:p-8 bg-gradient-to-tr from-black/90 via-black/85 to-black/80 text-white"
+          className="flex-grow p-4 sm:p-8 bg-gradient-to-br from-black via-neutral-950 to-black text-white"
         >
           <div className="max-w-5xl mx-auto">
-            <div className="flex flex-col gap-4">
-              <div className="mx-auto text-center flex flex-col gap-1 sm:gap-2">
-                <h2 className="text-xl font-semibold text-black">
-                  Welcome to VISCA!
-                </h2>
-                <p className="sm:mb-4 max-w-4xl mx-auto text-center">
-                  Welcome to the Vietnam International School Counselors
-                  Association - Hanoi (VISCA).
-                </p>
+            <div className="flex flex-col gap-10">
+
+              {/* Section Header (arrow shown, always open) */}
+              <div className="flex items-center gap-3 mt-10 sm:mt-12 mb-6">
+                <div className="inline-flex items-center select-none cursor-default">
+                  {/* Arrow bigger + spacing */}
+                  <ChevronRight className="h-6 w-6 rotate-90 text-zinc-300 mr-2" />
+                  <span className="text-2xl sm:text-3xl font-bold text-white">
+                    School Information
+                  </span>
+                </div>
+                {/* brighter divider line */}
+                <div className="ml-3 h-[1px] flex-1 bg-gradient-to-r from-zinc-300/90 via-zinc-200/70 to-transparent" />
               </div>
 
-              <div className="mx-auto w-full">
-                <List schools={schools} />
+              {/* Content (always visible) */}
+              <div className="space-y-6">
+                <div className="w-full">
+                  <List schools={schools} />
+                </div>
+
+                {/* Legend */}
+                <div className="flex flex-wrap items-center gap-6">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-4 h-4 rounded bg-black border border-zinc-600"></div>
+                    <span className="text-sm font-semibold">Schools</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-4 h-4 rounded bg-cyan-500"></div>
+                    <span className="text-sm font-semibold">Hotels</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-4 h-4 rounded bg-gray-400"></div>
+                    <span className="text-sm font-semibold">Places</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex gap-6">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-4 h-4 rounded bg-black"></div>
-                  <span className="text-sm font-semibold">Schools</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-4 h-4 rounded bg-cyan-500"></div>
-                  <span className="text-sm font-semibold">Hotels</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-4 h-4 rounded bg-gray-400"></div>
-                  <span className="text-sm font-semibold">Places</span>
-                </div>
-              </div>
-
+              {/* Map always visible below */}
               <MapContainer schools={schools} />
             </div>
           </div>
