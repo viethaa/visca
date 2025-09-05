@@ -67,7 +67,6 @@ export default function Home({ schools }) {
                 {/* brighter divider line */}
                 <div className="ml-3 h-[1px] flex-1 bg-gradient-to-r from-zinc-300/90 via-zinc-200/70 to-transparent" />
               </div>
-
               {/* Content (always visible) */}
               <div className="space-y-6">
                 <div className="w-full">
@@ -75,7 +74,7 @@ export default function Home({ schools }) {
                 </div>
 
                 {/* Legend */}
-                <div className="flex flex-wrap items-center gap-6">
+                {/* <div className="flex flex-wrap items-center gap-6">
                   <div className="flex items-center gap-1.5">
                     <div className="w-4 h-4 rounded bg-black border border-zinc-600"></div>
                     <span className="text-sm font-semibold">Schools</span>
@@ -88,17 +87,27 @@ export default function Home({ schools }) {
                     <div className="w-4 h-4 rounded bg-gray-400"></div>
                     <span className="text-sm font-semibold">Places</span>
                   </div>
+                </div> */}
+              </div>
+
+              <div className="flex items-center gap-3 mt-10 sm:mt-12 mb-6">
+                <div className="inline-flex items-center select-none cursor-default">
+                  {/* Arrow bigger + spacing */}
+                  <ChevronRight className="h-6 w-6 rotate-90 text-zinc-300 mr-2" />
+                  <span className="text-2xl sm:text-3xl font-bold text-white">
+                    Locations
+                  </span>
                 </div>
+                {/* brighter divider line */}
+                <div className="ml-3 h-[1px] flex-1 bg-gradient-to-r from-zinc-300/90 via-zinc-200/70 to-transparent" />
               </div>
 
               {/* Map always visible below */}
               <MapContainer schools={schools} />
             </div>
           </div>
+          <Footer />
         </main>
-
-        <AdDialog />
-        {/* <Footer /> */}
       </div>
     </>
   )
