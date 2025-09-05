@@ -273,7 +273,7 @@ export default function HeaderBanner() {
                     Explore Events
                   </p>
                   <Link
-                    href="/information"
+                    href=""
                     className="btn-hover rounded-lg border border-white/30 bg-white/20 px-6 py-3 text-sm font-medium text-white hover:bg-white/30 hover:border-white/50 backdrop-blur-md shadow-lg"
                   >
                     Learn More
@@ -312,7 +312,7 @@ export default function HeaderBanner() {
                         View details
                       </p>
                       <Link
-                        href="/locations"
+                        href=""
                         className="btn-hover rounded-2xl border border-white/15 bg-black/60 px-3.5 py-2 text-sm font-medium hover:bg-black/70"
                       >
                         Directions
