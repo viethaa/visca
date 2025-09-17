@@ -16,70 +16,60 @@ import Links from './map/Links'
 const normalizeName = (name = '') => name.toLowerCase().replace(/[^a-z0-9]/g, '')
 
 const buttonColors = {
-  // Concordia International School Hanoi
   concordiainternationalschoolhanoi: {
     gradient: 'from-green-400/50 via-emerald-500/40 to-teal-500/50',
     border: 'border-emerald-400/70',
     ring: 'ring-emerald-300/30 hover:ring-emerald-200/50',
     hoverShadow: 'hover:shadow-emerald-500/20',
   },
-  // St. Paul American School Hanoi → red → white tint
   stpaulamericanschoolhanoi: {
     gradient: 'from-red-700/80 via-red-600/70 to-white/80',
     border: 'border-red-600/70',
     ring: 'ring-red-400/30 hover:ring-red-300/50',
     hoverShadow: 'hover:shadow-red-600/20',
   },
-  // British Vietnamese International School Hanoi (BVIS) → sky blue → white tint
   britishvietnameseinternationalschoolhanoi: {
     gradient: 'from-sky-600/70 via-sky-500/60 to-white/80',
     border: 'border-sky-500/70',
     ring: 'ring-sky-300/30 hover:ring-sky-200/50',
     hoverShadow: 'hover:shadow-sky-500/20',
   },
-  // UNIS Hanoi
   unishanoi: {
     gradient: 'from-sky-400/50 via-blue-500/40 to-indigo-500/50',
     border: 'border-sky-400/70',
     ring: 'ring-sky-300/30 hover:ring-sky-200/50',
     hoverShadow: 'hover:shadow-sky-500/20',
   },
-  // TH School
   thschool: {
     gradient: 'from-pink-400/50 via-rose-500/40 to-fuchsia-600/50',
     border: 'border-fuchsia-400/70',
     ring: 'ring-fuchsia-300/30 hover:ring-fuchsia-200/50',
     hoverShadow: 'hover:shadow-fuchsia-500/20',
   },
-  // British International School Hanoi (BIS)
   britishinternationalschoolhanoi: {
     gradient: 'from-yellow-400/50 via-amber-500/40 to-orange-500/50',
     border: 'border-amber-400/70',
     ring: 'ring-amber-300/30 hover:ring-amber-200/50',
     hoverShadow: 'hover:shadow-amber-500/20',
   },
-  // The Olympia Schools → purple
   theolympiaschools: {
     gradient: 'from-purple-700/70 via-purple-600/60 to-violet-500/70',
     border: 'border-purple-500/70',
     ring: 'ring-purple-400/30 hover:ring-purple-300/50',
     hoverShadow: 'hover:shadow-purple-600/20',
   },
-  // Hanoi International School (HIS) → brighter blue/black
   hanoiinternationalschool: {
     gradient: 'from-gray-900/80 via-blue-800/70 to-blue-500/70',
     border: 'border-blue-500/70',
     ring: 'ring-blue-400/30 hover:ring-blue-300/50',
     hoverShadow: 'hover:shadow-blue-600/20',
   },
-  // Delta Global School → light green
   deltaglobalschool: {
     gradient: 'from-lime-400/70 via-green-300/60 to-emerald-400/70',
     border: 'border-lime-400/70',
     ring: 'ring-lime-300/30 hover:ring-lime-200/50',
     hoverShadow: 'hover:shadow-lime-500/20',
   },
-  // The Dewey Schools → turquoise
   thedeweyschools: {
     gradient: 'from-teal-400/70 via-cyan-400/60 to-sky-400/70',
     border: 'border-teal-400/70',
@@ -125,10 +115,14 @@ export default function List({ schools = [] }) {
     { icon: Clock, label: 'Preferred Time', value: school?.preferred_time, color: 'from-indigo-600/30 to-purple-600/30', copyable: false, clamp: 0 },
   ]
 
+  // 🔑 Sort schools alphabetically by name before rendering
+  const sortedSchools = [...schools].sort((a, b) =>
+    a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
+  )
+
   return (
-    // ★ Make grid items stretch so children can be equal height
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 items-stretch">
-      {schools.map((school) => {
+      {sortedSchools.map((school) => {
         const isOpen = !!openByName[school.name]
         const key = normalizeName(school.name)
         const colors = buttonColors[key] || defaultButtonColors
@@ -136,7 +130,6 @@ export default function List({ schools = [] }) {
         return (
           <div
             key={school.name}
-            // ★ Ensure each card fills its grid cell
             className="group relative bg-neutral-900/90 backdrop-blur-xl shadow-2xl rounded-3xl border-2 border-white/60 hover:border-white/80 transition-all duration-500 hover:scale-[1.02] shadow-2xl hover:shadow-blue-500/10 overflow-hidden h-full"
           >
             {/* Hover tint */}
@@ -171,14 +164,13 @@ export default function List({ schools = [] }) {
               </div>
 
               {/* Quick Links */}
-              {/* ★ Give the links area a small minimum height so short cards don't pull the button up */}
               <div className="mb-8 flex-1 min-h-[72px] sm:min-h-[88px]">
                 <div className="flex flex-wrap gap-2">
                   <Links school={school} />
                 </div>
               </div>
 
-              {/* View Details button — dynamic gradient per school */}
+              {/* View Details button */}
               <button
                 onClick={() => toggleCard(school.name)}
                 aria-expanded={isOpen}
