@@ -3,6 +3,11 @@ import Point from 'ol/geom/Point'
 import { Style, Icon } from 'ol/style'
 
 export const icon = (coords, name, src, type) => {
+  // Return null if no valid src is provided
+  if (!src || src.trim() === '') {
+    return null
+  }
+
   const iconFeature = new Feature({
     geometry: new Point(coords),
     name: name,
@@ -25,6 +30,11 @@ export const icon = (coords, name, src, type) => {
 }
 
 export const logo = (coords, name, src, opacity, type) => {
+  // Return null if no valid src is provided
+  if (!src || src.trim() === '') {
+    return null
+  }
+
   const logoFeature = new Feature({
     geometry: new Point(coords),
     name: name,

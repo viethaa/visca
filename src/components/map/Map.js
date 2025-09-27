@@ -52,7 +52,7 @@ export default function Map({
       return [
         icon(school.location, school.name, '/pins/black.png', 'school'),
         logo(school.location, school.name, school.logo, 1, 'school'),
-      ]
+      ].filter(Boolean) // Filter out null values
     })
 
     const placesPins = places.map((place) => {
@@ -70,7 +70,7 @@ export default function Map({
           0.5,
           'place'
         ),
-      ]
+      ].filter(Boolean) // Filter out null values
     })
 
     const hotelsPins = hotels.map((hotel) => {
@@ -88,7 +88,7 @@ export default function Map({
           0.8,
           'hotel'
         ),
-      ]
+      ].filter(Boolean) // Filter out null values
     })
 
     map
