@@ -10,6 +10,8 @@ import {
   Copy,
   Check,
   FileText,
+  CalendarDays,
+  StickyNote,
 } from 'lucide-react'
 import Links from './map/Links'
 
@@ -25,13 +27,13 @@ const buttonColors = {
     hoverShadow: 'hover:shadow-emerald-500/20',
   },
   stpaulamericanschoolhanoi: {
-    gradient: 'from-red-700/80 via-red-600/70 to-white/80',
+    gradient: 'from-red-700/80 via-red-600/70 to-red-500/60',
     border: 'border-red-600/70',
     ring: 'ring-red-400/30 hover:ring-red-300/50',
     hoverShadow: 'hover:shadow-red-600/20',
   },
   britishvietnameseinternationalschoolhanoi: {
-    gradient: 'from-sky-600/70 via-sky-500/60 to-white/80',
+    gradient: 'from-sky-600/70 via-sky-500/60 to-sky-400/50',
     border: 'border-sky-500/70',
     ring: 'ring-sky-300/30 hover:ring-sky-200/50',
     hoverShadow: 'hover:shadow-sky-500/20',
@@ -88,12 +90,12 @@ const defaultButtonColors = {
 }
 
 export default function List({ schools = [] }) {
-  // Initialize all schools to show details by default
+  // Initialize all schools to hide details by default
   const [openByName, setOpenByName] = useState(() => {
     const initialState = {}
     schools.forEach(school => {
       if (school?.name) {
-        initialState[school.name] = true
+        initialState[school.name] = false
       }
     })
     return initialState
@@ -132,7 +134,7 @@ export default function List({ schools = [] }) {
   ]
 
   const visitTimesItem = (school) => ({
-    icon: Clock,
+    icon: CalendarDays,
     label: 'School Visit Times',
     value: school?.preferred_time,
     color: 'from-amber-400/40 via-yellow-500/30 to-orange-400/30',
@@ -253,21 +255,21 @@ export default function List({ schools = [] }) {
 
                   {/* School Info */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-bold mb-1 bg-gradient-to-r from-white via-sky-100 to-blue-200 bg-clip-text text-transparent">
+                    <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-white via-sky-100 to-blue-200 bg-clip-text text-transparent">
                       {school.name}
                     </h3>
                     {school.address && (
-                      <p className="text-sm text-gray-400 flex items-center gap-1">
-                        <MapPin className="h-3 w-3" />
-                        {school.address}
-                      </p>
+                      <div className="inline-flex items-center gap-1.5 px-2 py-1 bg-gray-800/40 rounded-md border border-gray-600/40">
+                        <MapPin className="h-3 w-3 text-gray-400 shrink-0" />
+                        <span className="text-xs text-gray-300 font-medium leading-tight">{school.address}</span>
+                      </div>
                     )}
                   </div>
                 </div>
 
                 {/* Right side: Links and Toggle */}
                 <div className="flex items-center gap-3">
-                  <div className="hidden sm:flex flex-wrap gap-2">
+                  <div className="hidden sm:flex flex-wrap gap-2 justify-start">
                     <Links school={school} />
                   </div>
 
@@ -275,17 +277,17 @@ export default function List({ schools = [] }) {
                     onClick={() => toggleCard(school.name)}
                     aria-expanded={isOpen}
                     className={`
-                      flex items-center gap-2 py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300
+                      flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium transition-all duration-300
                       bg-gradient-to-r ${colors.gradient}
                       border ${colors.border}
                       ${colors.ring}
-                      text-white shadow-md ${colors.hoverShadow}
+                      text-white shadow-sm ${colors.hoverShadow}
                       hover:scale-105
                     `}
                   >
                     <span>{isOpen ? 'Hide Details' : 'Show Details'}</span>
                     <ChevronRight
-                      className={`h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
+                      className={`h-3 w-3 transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
                     />
                   </button>
                 </div>
@@ -293,7 +295,7 @@ export default function List({ schools = [] }) {
 
               {/* Mobile Links */}
               <div className="sm:hidden mb-4">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-start">
                   <Links school={school} />
                 </div>
               </div>
@@ -373,8 +375,7 @@ export default function List({ schools = [] }) {
 
                     return (
                       <div className="pt-3 border-t border-white/10 space-y-3">
-                        <div className="flex items-center gap-2 text-amber-400/80">
-                          <visitTimes.icon className="h-4 w-4" />
+                        <div className="flex items-center gap-2">
                           <span className="font-medium text-gray-300 uppercase tracking-wide text-xs">
                             {visitTimes.label}:
                           </span>
@@ -397,7 +398,6 @@ export default function List({ schools = [] }) {
                   {school.notes && (
                     <div className="pt-3 border-t border-white/10">
                       <div className="flex items-start gap-2 mb-2">
-                        <FileText className="w-4 h-4 text-gray-400 mt-0.5" />
                         <span className="font-medium text-gray-300 uppercase tracking-wide text-xs">
                           Notes:
                         </span>
