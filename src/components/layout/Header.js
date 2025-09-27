@@ -1,25 +1,29 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import ContactDialog from "../ContactDialog";
 import { usePathname } from "next/navigation";
 import AdDialog from "../AdDialog";
 
 export default function HeaderBanner() {
-  const scrollToMap = () => {
-    const mapContainer = document.getElementById('map-container');
-    if (mapContainer) {
-      mapContainer.scrollIntoView({
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
     }
   };
 
-  const [open, setOpen] = useState(false);
+  const scrollToMap = () => scrollToSection('map-container');
+  const scrollToInformation = () => scrollToSection('information');
+  const scrollToLocations = () => scrollToSection('locations');
 
+  const [open, setOpen] = useState(false);
   const [adDialogOpen, setAdDialogOpen] = useState(true);
+  const [currentSection, setCurrentSection] = useState('/');
 
   const navLinks = useMemo(
     () => [
@@ -37,33 +41,85 @@ export default function HeaderBanner() {
   const [slider, setSlider] = useState({ left: 0, width: 0 });
 
   const activeHref = useMemo(() => {
+    // If we're on the home page, check if we're in a specific section
+    if (pathname === "/" && currentSection !== "/") {
+      return currentSection;
+    }
+
     const exact = navLinks.find((l) => l.href === pathname)?.href;
     if (exact) return exact;
     const pref = [...navLinks]
       .filter((l) => pathname.startsWith(l.href) && l.href !== "/")
       .sort((a, b) => b.href.length - a.href.length)[0];
     return pref?.href ?? "/";
-  }, [pathname, navLinks]);
+  }, [pathname, navLinks, currentSection]);
 
-  const recalcSlider = () => {
+  const recalcSlider = useCallback(() => {
     const el = itemRefs.current[activeHref];
     const wrap = containerRef.current;
     if (!el || !wrap) return;
     const elRect = el.getBoundingClientRect();
     const wrapRect = wrap.getBoundingClientRect();
     setSlider({ left: elRect.left - wrapRect.left, width: elRect.width });
-  };
+  }, [activeHref]);
 
   useEffect(() => {
     recalcSlider();
     const t = setTimeout(recalcSlider, 0);
     return () => clearTimeout(t);
-  }, [activeHref]);
+  }, [activeHref, recalcSlider]);
 
   useEffect(() => {
     const onResize = () => recalcSlider();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
+  }, [recalcSlider]);
+
+  // Scroll position detection
+  useEffect(() => {
+    const sections = ['information', 'locations'];
+    const observers = [];
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          if (sectionId === 'information') {
+            setCurrentSection('#information');
+          } else if (sectionId === 'locations') {
+            setCurrentSection('#locations');
+          }
+        }
+      });
+
+      // Check if we're at the top of the page (above all sections)
+      const informationElement = document.getElementById('information');
+      if (informationElement) {
+        const rect = informationElement.getBoundingClientRect();
+        if (rect.top > window.innerHeight * 0.3) {
+          setCurrentSection('/');
+        }
+      }
+    };
+
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        observer.observe(element);
+        observers.push(observer);
+      }
+    });
+
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
   }, []);
 
   return (
@@ -122,10 +178,13 @@ export default function HeaderBanner() {
                 const isActive = l.href === activeHref;
 
                 if (l.isScroll) {
+                  const scrollFunction = l.href === '#information' ? scrollToInformation :
+                                       l.href === '#locations' ? scrollToLocations :
+                                       scrollToMap;
                   return (
                     <button
                       key={l.href}
-                      onClick={scrollToMap}
+                      onClick={scrollFunction}
                       className="px-2"
                     >
                       <span
@@ -187,11 +246,14 @@ export default function HeaderBanner() {
                   const isActive = l.href === activeHref;
 
                   if (l.isScroll) {
+                    const scrollFunction = l.href === '#information' ? scrollToInformation :
+                                         l.href === '#locations' ? scrollToLocations :
+                                         scrollToMap;
                     return (
                       <button
                         key={l.href}
                         onClick={() => {
-                          scrollToMap();
+                          scrollFunction();
                           setOpen(false);
                         }}
                         className={[

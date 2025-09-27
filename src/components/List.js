@@ -87,7 +87,16 @@ const defaultButtonColors = {
 }
 
 export default function List({ schools = [] }) {
-  const [openByName, setOpenByName] = useState({})
+  // Initialize all schools to show details by default
+  const [openByName, setOpenByName] = useState(() => {
+    const initialState = {}
+    schools.forEach(school => {
+      if (school?.name) {
+        initialState[school.name] = true
+      }
+    })
+    return initialState
+  })
   const [copiedItems, setCopiedItems] = useState({})
 
   // refs for syncing header heights per row
@@ -120,7 +129,7 @@ export default function List({ schools = [] }) {
     { icon: Mail, label: 'Email', value: school?.counselor_email, color: 'from-purple-600/30 to-pink-600/30', copyable: true, clamp: 1 },
     { icon: Phone, label: 'Phone', value: school?.counselor_phone, color: 'from-emerald-600/30 to-teal-600/30', copyable: false, clamp: 1 },
     { icon: MessageCircle, label: 'Contact Point', value: school?.contact_point, color: 'from-orange-600/30 to-red-600/30', copyable: true, clamp: 1 },
-    { icon: Clock, label: 'Preferred Time', value: school?.preferred_time, color: 'from-indigo-600/30 to-purple-600/30', copyable: false, clamp: 0 },
+    { icon: Clock, label: 'School Visit Times', value: school?.preferred_time, color: 'from-indigo-600/30 to-purple-600/30', copyable: false, clamp: 0 },
   ]
 
   // Sort schools alphabetically (stable)
@@ -266,7 +275,7 @@ export default function List({ schools = [] }) {
                   shadow-lg ${colors.hoverShadow}
                 `}
               >
-                <span>{isOpen ? 'Hide Details' : 'View Details'}</span>
+                <span>{isOpen ? 'Hide Details' : 'Show Details'}</span>
                 <ChevronRight
                   className={`h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 ${isOpen ? 'rotate-90' : ''}`}
                 />

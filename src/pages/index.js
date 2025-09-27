@@ -56,7 +56,7 @@ export default function Home({ schools }) {
             <div className="flex flex-col gap-10">
 
               {/* Section Header (arrow shown, always open) */}
-              <div className="flex items-center gap-3 mt-10 sm:mt-12 mb-6">
+              <div id="information" className="flex items-center gap-3 mt-10 sm:mt-12 mb-6">
                 <div className="inline-flex items-center select-none cursor-default">
                   {/* Arrow bigger + spacing */}
                   <ChevronRight className="h-6 w-6 rotate-90 text-zinc-300 mr-2" />
@@ -90,7 +90,7 @@ export default function Home({ schools }) {
                 </div> */}
               </div>
 
-              <div className="flex items-center gap-3 mt-10 sm:mt-12 mb-6">
+              <div id="locations" className="flex items-center gap-3 mt-10 sm:mt-12 mb-6">
                 <div className="inline-flex items-center select-none cursor-default">
                   {/* Arrow bigger + spacing */}
                   <ChevronRight className="h-6 w-6 rotate-90 text-zinc-300 mr-2" />
