@@ -29,8 +29,9 @@ export default function HeaderBanner() {
     () => [
       { href: "/", label: "Home" },
       { href: "#information", label: "Information", isScroll: true },
-      { href: "#locations", label: "Locations", isScroll: true },
+      { href: "#locations", label: "VISCA Map", isScroll: true },
       { href: "#events", label: "University Visits" },
+      { href: "#events", label: "Hotels" },
     ],
     []
   );
@@ -179,8 +180,8 @@ export default function HeaderBanner() {
 
                 if (l.isScroll) {
                   const scrollFunction = l.href === '#information' ? scrollToInformation :
-                                       l.href === '#locations' ? scrollToLocations :
-                                       scrollToMap;
+                    l.href === '#locations' ? scrollToLocations :
+                      scrollToMap;
                   return (
                     <button
                       key={l.href}
@@ -247,8 +248,8 @@ export default function HeaderBanner() {
 
                   if (l.isScroll) {
                     const scrollFunction = l.href === '#information' ? scrollToInformation :
-                                         l.href === '#locations' ? scrollToLocations :
-                                         scrollToMap;
+                      l.href === '#locations' ? scrollToLocations :
+                        scrollToMap;
                     return (
                       <button
                         key={l.href}
