@@ -221,7 +221,7 @@ export default function List({ schools = [] }) {
   }
 
   return (
-    <div ref={containerRef} className="space-y-6">
+    <div ref={containerRef} className="space-y-8">
       {sortedSchools.map((school, idx) => {
         const isOpen = !!openByName[school.name]
         const slug = normalizeName(school.name)
@@ -299,6 +299,7 @@ export default function List({ schools = [] }) {
                   <Links school={school} />
                 </div>
               </div>
+
 
               {/* Details Section */}
               <div
