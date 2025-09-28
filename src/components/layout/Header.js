@@ -30,8 +30,8 @@ export default function HeaderBanner() {
       { href: "/", label: "Home" },
       { href: "#information", label: "Information", isScroll: true },
       { href: "#locations", label: "VISCA Map", isScroll: true },
+      { href: "/hotels", label: "Hotels" },
       { href: "#events", label: "University Visits" },
-      { href: "#events", label: "Hotels" },
     ],
     []
   );
