@@ -28,7 +28,7 @@ export default function HeaderBanner() {
   const navLinks = useMemo(
     () => [
       { href: "/", label: "Home" },
-      { href: "#information", label: "Information", isScroll: true },
+      { href: "#information", label: "School", isScroll: true },
       { href: "#locations", label: "VISCA Map", isScroll: true },
       { href: "/hotels", label: "Hotels" },
       { href: "#events", label: "University Visits" },
@@ -78,48 +78,60 @@ export default function HeaderBanner() {
 
   // Scroll position detection
   useEffect(() => {
-    const sections = ['information', 'locations'];
-    const observers = [];
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -70% 0px',
-      threshold: 0
-    };
-
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-          if (sectionId === 'information') {
-            setCurrentSection('#information');
-          } else if (sectionId === 'locations') {
-            setCurrentSection('#locations');
-          }
-        }
-      });
-
-      // Check if we're at the top of the page (above all sections)
+    const handleScroll = () => {
       const informationElement = document.getElementById('information');
-      if (informationElement) {
-        const rect = informationElement.getBoundingClientRect();
-        if (rect.top > window.innerHeight * 0.3) {
-          setCurrentSection('/');
+      const locationsElement = document.getElementById('locations');
+
+      if (!informationElement || !locationsElement) return;
+
+      const windowHeight = window.innerHeight;
+      const viewportCenter = windowHeight / 2;
+
+      const informationRect = informationElement.getBoundingClientRect();
+      const locationsRect = locationsElement.getBoundingClientRect();
+
+      // Check if we're above the information section (homepage area)
+      if (informationRect.top > viewportCenter) {
+        setCurrentSection('/');
+      }
+      // Check if information section header is in the center area of viewport
+      else if (informationRect.top <= viewportCenter && informationRect.top >= -100) {
+        setCurrentSection('#information');
+      }
+      // Check if locations section header is in the center area of viewport
+      else if (locationsRect.top <= viewportCenter && locationsRect.top >= -100) {
+        setCurrentSection('#locations');
+      }
+      // If both sections are above viewport center, determine which one is closer
+      else if (informationRect.top < -100 && locationsRect.top < -100) {
+        // Both sections are above, choose the one that passed the center most recently
+        if (Math.abs(informationRect.top) < Math.abs(locationsRect.top)) {
+          setCurrentSection('#information');
+        } else {
+          setCurrentSection('#locations');
         }
       }
     };
 
-    sections.forEach((sectionId) => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-        observer.observe(element);
-        observers.push(observer);
+    // Initial check
+    handleScroll();
+
+    // Add scroll listener with throttling for better performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
-    });
+    };
+
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
 
     return () => {
-      observers.forEach(observer => observer.disconnect());
+      window.removeEventListener('scroll', throttledHandleScroll);
     };
   }, []);
 

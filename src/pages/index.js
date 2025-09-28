@@ -55,17 +55,17 @@ export default function Home({ schools }) {
           <div className="max-w-5xl mx-auto">
             <div className="flex flex-col gap-10">
 
-              {/* Section Header (arrow shown, always open) */}
-              <div id="information" className="flex items-center gap-3 mt-10 sm:mt-12 mb-6">
-                <div className="inline-flex items-center select-none cursor-default">
-                  {/* Arrow bigger + spacing */}
-                  <ChevronRight className="h-6 w-6 rotate-90 text-zinc-300 mr-2" />
-                  <span className="text-2xl sm:text-3xl font-bold text-white">
+              {/* Clean Modern School Information Header */}
+              <div id="information" className="flex items-center mt-8 sm:mt-10 mb-6">
+                <div className="flex items-center gap-3">
+                  {/* Sleek accent dot */}
+                  <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
+                  <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-wide">
                     School Information
-                  </span>
+                  </h2>
                 </div>
-                {/* brighter divider line */}
-                <div className="ml-3 h-[1px] flex-1 bg-gradient-to-r from-zinc-300/90 via-zinc-200/70 to-transparent" />
+                {/* Minimal divider */}
+                <div className="flex-1 ml-6 h-px bg-gradient-to-r from-white/20 to-transparent"></div>
               </div>
               {/* Content (always visible) */}
               <div className="space-y-6">
@@ -90,16 +90,17 @@ export default function Home({ schools }) {
                 </div> */}
               </div>
 
-              <div id="locations" className="flex items-center gap-3 mt-10 sm:mt-12 mb-6">
-                <div className="inline-flex items-center select-none cursor-default">
-                  {/* Arrow bigger + spacing */}
-                  <ChevronRight className="h-6 w-6 rotate-90 text-zinc-300 mr-2" />
-                  <span className="text-2xl sm:text-3xl font-bold text-white">
-                    Locations
-                  </span>
+              {/* Clean Modern Locations Header */}
+              <div id="locations" className="flex items-center mt-8 sm:mt-10 mb-6">
+                <div className="flex items-center gap-3">
+                  {/* Sleek accent dot */}
+                  <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
+                  <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-wide">
+                    VISCA Map
+                  </h2>
                 </div>
-                {/* brighter divider line */}
-                <div className="ml-3 h-[1px] flex-1 bg-gradient-to-r from-zinc-300/90 via-zinc-200/70 to-transparent" />
+                {/* Minimal divider */}
+                <div className="flex-1 ml-6 h-px bg-gradient-to-r from-white/20 to-transparent"></div>
               </div>
 
               {/* Map always visible below */}

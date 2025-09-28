@@ -123,6 +123,15 @@
       "website": "https://www.marriott.com/en-us/hotels/hanjw-jw-marriott-hotel-hanoi/overview/"
     },
     {
+      "name": "Lotte Hotel Hanoi",
+      "address": "54 Liễu Giai, Cống Vị, Ba Đình, Hà Nội, Vietnam",
+      "latitude": 21.0349,
+      "longitude": 105.8158,
+      "phone": "+84 024 3333 1000",
+      "icon": "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/common/logo.png",
+      "website": "https://www.lottehotel.com/hanoi-hotel/"
+    },
+    {
       "name": "Pan Pacific Hanoi",
       "address": "1 Thanh Niên, Trúc Bạch, Ba Đình, Hà Nội, Vietnam",
       "latitude": 21.0498,
