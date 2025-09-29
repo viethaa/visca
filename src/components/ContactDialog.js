@@ -16,13 +16,13 @@ export default function ContactDialog() {
         Contact
       </DialogTrigger>
 
-      <DialogContent className="max-w-lg bg-gray-950 backdrop-blur-2xl border-[4px] border-black text-white rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.9)]">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-white mb-2">
+      <DialogContent className="max-w-md bg-neutral-900/95 backdrop-blur-xl border border-white/10 text-white rounded-xl shadow-2xl">
+        <DialogHeader className="space-y-4 pb-6">
+          <DialogTitle className="text-xl font-semibold text-white">
             Get in Touch
           </DialogTitle>
-          <DialogDescription className="text-gray-300 leading-relaxed">
-            Have a question or want to work together? We&apos;d love to hear from you.
+          <DialogDescription className="text-neutral-400 text-sm leading-relaxed">
+            Have questions about VISCA or want to connect? We&apos;d love to hear from you.
           </DialogDescription>
         </DialogHeader>
 
