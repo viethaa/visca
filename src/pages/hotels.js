@@ -174,6 +174,23 @@ export default function Hotels() {
       amenities: ["Premium", "Lake Access", "Pool", "Fine Dining", "Cultural Tours"],
       category: "Resort"
     },
+        {
+      name: "Sofitel Legend Metropole Hanoi",
+      address: "15 Ngo Quyen Street, Hoan Kiem District, Hanoi Old Quarter",
+      phone: "+84 24 3826 6919",
+      website: "https://www.sofitel-legend-metropole-hanoi.com/",
+      images: [
+        "https://wnfdiary.com/wp-content/uploads/2019/03/metropole-hotel-hanoi-outside.jpg",
+        "https://phgcdn.com/images/uploads/HANSL/accommodationsimages/1600x813-Sofitel-Legend-Metropole-Hanoi-Guestroom.jpg",
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/fb/54/c7/swimming-pool.jpg?w=700&h=-1&s=1",
+        "https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/95/2016/12/21133201/MH_Le_Club-585x390.jpg"
+      ],
+      rating: 5,
+      priceRange: "$200 - $450",
+      description: "Historic luxury hotel in Hanoi’s Old Quarter, blending French colonial charm with timeless elegance since 1901. Perfect for exploring the city center.",
+      amenities: ["Historic Heritage", "City Center", "Premium", "Spa", "Fine Dining"],
+      category: "Historic"
+    },
     {
       name: "Lotte Hotel Hanoi",
       address: "54 Liễu Giai, Cống Vị, Ba Đình, Hà Nội",
@@ -190,7 +207,7 @@ export default function Hotels() {
       description: "Modern luxury hotel in the diplomatic district offering refined accommodations with Korean hospitality and international standards.",
       amenities: ["Shopping Mall", "Rooftop Bar", "Sky-view Infinity Pool", "Multiple Restaurants"],
       category: "Modern"
-    }
+    },
   ]
 
   const getThemeColors = (theme) => {
