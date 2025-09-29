@@ -5,13 +5,13 @@ import { Textarea } from './ui/textarea'
 
 export default function ContactForm() {
   return (
-    <form id='contact-form' name='contact-form' className='space-y-6 mt-6' netlify>
+    <form id='contact-form' name='contact-form' className='space-y-5' netlify>
       <input type='hidden' name='form-name' value='contact-form' />
 
       <div className='space-y-2'>
         <Label
           htmlFor='nameOrOrganization'
-          className="text-gray-300 font-medium text-sm"
+          className="text-neutral-300 font-medium text-sm"
         >
           Name/Organization
         </Label>
@@ -19,16 +19,16 @@ export default function ContactForm() {
           type='text'
           id='nameOrOrganization'
           name='nameOrOrganization'
-          placeholder='Enter your name or organization'
+          placeholder='Your name or organization'
           required
-          className="bg-gray-800/70 backdrop-blur-sm border-gray-700 text-white placeholder-gray-400 rounded-xl px-4 py-3 focus:border-gray-600 focus:ring-1 focus:ring-gray-600 transition-all"
+          className="bg-neutral-800/50 backdrop-blur-sm border-neutral-700/50 text-white placeholder-neutral-500 rounded-lg px-4 py-3 focus:border-neutral-600 focus:ring-1 focus:ring-neutral-600/50 transition-all hover:border-neutral-600/70"
         />
       </div>
 
       <div className='space-y-2'>
         <Label
           htmlFor='email'
-          className="text-gray-300 font-medium text-sm"
+          className="text-neutral-300 font-medium text-sm"
         >
           Email
         </Label>
@@ -36,16 +36,16 @@ export default function ContactForm() {
           type='email'
           id='email'
           name='email'
-          placeholder='Enter your email'
+          placeholder='your.email@example.com'
           required
-          className="bg-gray-800/70 backdrop-blur-sm border-gray-700 text-white placeholder-gray-400 rounded-xl px-4 py-3 focus:border-gray-600 focus:ring-1 focus:ring-gray-600 transition-all"
+          className="bg-neutral-800/50 backdrop-blur-sm border-neutral-700/50 text-white placeholder-neutral-500 rounded-lg px-4 py-3 focus:border-neutral-600 focus:ring-1 focus:ring-neutral-600/50 transition-all hover:border-neutral-600/70"
         />
       </div>
 
       <div className='space-y-2'>
         <Label
           htmlFor='message'
-          className="text-gray-300 font-medium text-sm"
+          className="text-neutral-300 font-medium text-sm"
         >
           Message
         </Label>
@@ -53,15 +53,15 @@ export default function ContactForm() {
           id='message'
           name='message'
           rows={4}
-          placeholder='Enter your message'
+          placeholder='Tell us about your inquiry...'
           required
-          className="bg-gray-800/70 backdrop-blur-sm border-gray-700 text-white placeholder-gray-400 rounded-xl px-4 py-3 focus:border-gray-600 focus:ring-1 focus:ring-gray-600 transition-all resize-none"
+          className="bg-neutral-800/50 backdrop-blur-sm border-neutral-700/50 text-white placeholder-neutral-500 rounded-lg px-4 py-3 focus:border-neutral-600 focus:ring-1 focus:ring-neutral-600/50 transition-all resize-none hover:border-neutral-600/70"
         />
       </div>
 
       <button
         type='submit'
-        className='w-full bg-gray-900/80 backdrop-blur-sm hover:bg-gray-900 text-white font-medium px-6 py-3 rounded-xl border border-gray-700 hover:border-gray-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-600'
+        className='w-full bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3 rounded-lg border border-white/20 hover:border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/20 backdrop-blur-sm'
       >
         Send Message
       </button>
