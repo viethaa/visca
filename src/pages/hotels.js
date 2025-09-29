@@ -135,7 +135,7 @@ export default function Hotels() {
         "https://cache.marriott.com/is/image/marriotts7prod/jw-hanjw-french-grill-27972-26761:Wide-Hor?wid=1336&fit=constrain"
       ],
       rating: 5,
-      priceRange: "$180 - $350",
+      priceRange: "$250 - $350",
       description: "Luxury 5-star hotel featuring elegant rooms, world-class dining, and exceptional service in the heart of Hanoi's business district.",
       amenities: ["Luxury", "Business Center", "Lakefront View", "Pool", "Restaurant"],
       category: "Business"
@@ -152,7 +152,7 @@ export default function Hotels() {
         "https://cache.marriott.com/is/image/marriotts7prod/si-hanhs-oven-dor---setting-40351:Wide-Hor?wid=1336&fit=constrain"
       ],
       rating: 5,
-      priceRange: "$160 - $300",
+      priceRange: "$140 - $200",
       description: "Lakeside luxury hotel offering stunning views of West Lake with premium accommodations and authentic Vietnamese hospitality.",
       amenities: ["Resort", "Lake-side", "Garden View", "Peaceful", "Award-Winning Spa"],
       category: "Lakeside"
@@ -169,12 +169,12 @@ export default function Hotels() {
         "https://d3rx7ba35c2ox5.cloudfront.net/-1166611616/cms/cache/v2/63ec64604165d.jpg/1920x1080/fit/80/75f3f99f72146f8ecf34682785630db6.jpg"
       ],
       rating: 5,
-      priceRange: "$200 - $400",
+      priceRange: "$150 - $200",
       description: "Award-winning lakefront resort offering serene luxury with traditional Vietnamese design and modern sophistication.",
       amenities: ["Premium", "Lake Access", "Pool", "Fine Dining", "Cultural Tours"],
       category: "Resort"
     },
-        {
+    {
       name: "Sofitel Legend Metropole Hanoi",
       address: "15 Ngo Quyen Street, Hoan Kiem District, Hanoi Old Quarter",
       phone: "+84 24 3826 6919",
@@ -186,9 +186,9 @@ export default function Hotels() {
         "https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/95/2016/12/21133201/MH_Le_Club-585x390.jpg"
       ],
       rating: 5,
-      priceRange: "$200 - $450",
+      priceRange: "$300 - $800",
       description: "Historic luxury hotel in Hanoi’s Old Quarter, blending French colonial charm with timeless elegance since 1901. Perfect for exploring the city center.",
-      amenities: ["Historic Heritage", "City Center", "Premium", "Spa", "Fine Dining"],
+      amenities: ["Historic Heritage", "Central District", "Premium", "Spa", "Fine Dining"],
       category: "Historic"
     },
     {
@@ -198,15 +198,66 @@ export default function Hotels() {
       website: "https://www.lottehotel.com/hanoi-hotel/",
       images: [
         "https://www.hoteljob.vn/uploads/images/2022/01/04-16/avatar-41_crop_1170_400_100.jpg",
-        "https://cdn.xanhsm.com/2025/01/e4730e3e-top-of-hanoi-2.jpg",
+        "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/https://www.cfmedia.vfmleonardo.com/imageRepo/7/0/139/566/651/Presidential_Suite_Bedroom2_O/Lotte-Hotel-Hanoi-Suite.jpg?tr=w-780%2Ch-437%2Cfo-auto",
         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/4b/46/e9/caption.jpg?w=1200&h=-1&s=1",
         "https://img.lottehotel.com/cms/asset/2025/06/26/29244/415-9-1920-din-LTHA.webp"
       ],
       rating: 5,
-      priceRange: "$150 - $280",
+      priceRange: "$350 - $500",
       description: "Modern luxury hotel in the diplomatic district offering refined accommodations with Korean hospitality and international standards.",
       amenities: ["Shopping Mall", "Rooftop Bar", "Sky-view Infinity Pool", "Multiple Restaurants"],
       category: "Modern"
+    },
+    {
+      name: "Pan Pacific Hanoi",
+      address: "1 Thanh Nien Road, Ba Dinh District, Hanoi",
+      phone: "+84 24 3823 8888",
+      website: "https://www.panpacific.com/en/hotels-and-resorts/pp-hanoi.html",
+      images: [
+        "https://image.vietgoing.com/hotel/01/12/large/vietgoing_nij2202107282.webp",
+        "https://www.distantjourneys.co.uk/wp-content/uploads/2019/09/pan-pacific-hotel-deluxe-room-twin.jpg",
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/41/88/20/swimming-pool.jpg?w=700&h=-1&s=1",
+        "https://www.thetraveltemple.com.au/wp-content/uploads/2018/08/PanPacificHanoi_Summit_banner_image.jpg"
+      ],
+      rating: 5,
+      priceRange: "$125 - $150",
+      description: "Contemporary luxury hotel overlooking West Lake, offering sophisticated accommodations with panoramic lake views and world-class amenities.",
+      amenities: ["Lake View", "Executive Lounge", "Spa", "Business Center", "Fine Dining"],
+      category: "Contemporary"
+    },
+    {
+      name: "Hilton Hanoi Opera",
+      address: "1 Le Thanh Tong Street, Hoan Kiem District, Hanoi",
+      phone: "+84 24 3933 0500",
+      website: "https://www.hilton.com/en/hotels/hanhihi-hilton-hanoi-opera/",
+      images: [
+        "https://cdnphoto.dantri.com.vn/SWRXp4ZBe7mm0B_C9JCmEkdPai0=/zoom/1200_630/2021/03/04/hilton-1614827904717.jpg",
+        "https://lilystravelagency.com/wp-content/uploads/2024/09/hanoi-opera-house3.png",
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/483817070.jpg?k=968c7080b2a0219783dd013fe2a2fda59d7d3b918731db90608283c7ab692e82&o=&hp=1",
+        "https://monkeymiles.boardingarea.com/wp-content/uploads/2017/03/Hanoi-Hilton-Opera-75-of-83.jpg"
+      ],
+      rating: 5,
+      priceRange: "$100 - $160",
+      description: "Elegant hotel in the heart of Hanoi, steps from the Opera House and Old Quarter, offering refined luxury with exceptional service and prime location.",
+      amenities: ["Opera House View", "Central Location", "Executive Floors", "Fitness Center"],
+      category: "Urban"
+    },
+    {
+      name: "Melia Hanoi",
+      address: "44B Ly Thuong Kiet Street, Hoan Kiem District, Hanoi",
+      phone: "+84 24 3934 3343",
+      website: "https://www.melia.com/en/hotels/vietnam/hanoi/melia-hanoi",
+      images: [
+        "https://vdstravel.com/wp-content/uploads/2025/09/21.jpg",
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/33/59/48/caption.jpg?w=900&h=500&s=1",
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/5c/fd/04/swimming-pool.jpg?w=700&h=-1&s=1",
+        "https://www.top25restaurants.com/media/news/MeliaHN_ChamRestaurant2.jpg"
+      ],
+      rating: 5,
+      priceRange: "$100 - $150",
+      description: "Sophisticated Spanish hospitality in central Hanoi, featuring contemporary design and premium amenities near key attractions and business districts.",
+      amenities: ["Spanish Hospitality", "Central District", "Rooftop Pool", "Spa Services"],
+      category: "International"
     },
   ]
 
@@ -419,11 +470,10 @@ export default function Hotels() {
                             <button
                               key={imageIndex}
                               onClick={() => setCurrentImageIndex(prev => ({ ...prev, [index]: imageIndex }))}
-                              className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                                (currentImageIndex[index] || 0) === imageIndex
-                                  ? 'bg-white'
-                                  : 'bg-white/40 hover:bg-white/70'
-                              }`}
+                              className={`w-2 h-2 rounded-full transition-all duration-200 ${(currentImageIndex[index] || 0) === imageIndex
+                                ? 'bg-white'
+                                : 'bg-white/40 hover:bg-white/70'
+                                }`}
                             />
                           ))}
                         </div>
