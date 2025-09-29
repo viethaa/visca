@@ -232,9 +232,9 @@ export default function Hotels() {
       website: "https://www.hilton.com/en/hotels/hanhihi-hilton-hanoi-opera/",
       images: [
         "https://cdnphoto.dantri.com.vn/SWRXp4ZBe7mm0B_C9JCmEkdPai0=/zoom/1200_630/2021/03/04/hilton-1614827904717.jpg",
-        "https://lilystravelagency.com/wp-content/uploads/2024/09/hanoi-opera-house3.png",
         "https://cf.bstatic.com/xdata/images/hotel/max1024x768/483817070.jpg?k=968c7080b2a0219783dd013fe2a2fda59d7d3b918731db90608283c7ab692e82&o=&hp=1",
-        "https://monkeymiles.boardingarea.com/wp-content/uploads/2017/03/Hanoi-Hilton-Opera-75-of-83.jpg"
+        "https://monkeymiles.boardingarea.com/wp-content/uploads/2017/03/Hanoi-Hilton-Opera-75-of-83.jpg",
+        "https://hilton-hanoi-opera.hanoi-hotels.org/data/Photos/OriginalPhoto/12778/1277858/1277858851.JPEG"
       ],
       rating: 5,
       priceRange: "$100 - $160",
@@ -484,9 +484,9 @@ export default function Hotels() {
                           <span className="text-sm font-medium">{hotel.rating}.0</span>
                         </div>
 
-                        {/* Image Counter */}
+                        {/* Image Label */}
                         <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded text-xs">
-                          {(currentImageIndex[index] || 0) + 1} / {hotel.images.length}
+                          {['Hotel', 'Room', 'Pool', 'Dining'][currentImageIndex[index] || 0]}
                         </div>
                       </div>
 
