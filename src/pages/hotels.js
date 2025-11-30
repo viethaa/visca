@@ -91,10 +91,9 @@ export default function Hotels() {
   const navLinks = useMemo(
     () => [
       { href: "/", label: "Home" },
-      { href: "/#information", label: "School" },
-      { href: "/#locations", label: "VISCA Map" },
+      { href: "/#information", label: "College Registration" },
+      { href: "/map", label: "VISCA Map" },
       { href: "/hotels", label: "Hotels" },
-      { href: "/#events", label: "University Visits" },
     ],
     []
   )
@@ -299,7 +298,7 @@ export default function Hotels() {
     <>
       <Head>
         <title>Hotels | VISCA</title>
-        <meta name="description" content="Premium hotels for VISCA events and university visits in Hanoi - JW Marriott, Sheraton, InterContinental, and Lotte Hotel" />
+        <meta name="description" content="Premium hotels for VISCA events in Hanoi - JW Marriott, Sheraton, InterContinental, and Lotte Hotel" />
       </Head>
 
       <div className="flex min-h-screen flex-col">
@@ -415,7 +414,7 @@ export default function Hotels() {
                   {/* Clean Subtitle in Box */}
                   <div className="inline-block px-4 py-2 bg-neutral-800/30 backdrop-blur-sm border border-neutral-700/20 rounded-md mx-auto mb-12">
                     <p className="text-base sm:text-lg text-neutral-300 leading-relaxed">
-                      Exceptional accommodations for VISCA events and university visits in Hanoi
+                      Exceptional accommodations for VISCA events in Hanoi
                     </p>
                   </div>
                 </div>
@@ -610,7 +609,7 @@ export default function Hotels() {
                         <Users className="w-5 h-5 text-white/80" />
                       </div>
                       <h4 className="font-medium text-white/90 mb-2 text-sm">Business Facilities</h4>
-                      <p className="text-white/60 text-xs">Meeting rooms for university visits</p>
+                      <p className="text-white/60 text-xs">Meeting rooms and event spaces</p>
                     </div>
                   </div>
                 </div>

@@ -54,14 +54,16 @@ export default function MapContainer({ schools }) {
   console.log(school)
 
   return (
-    <div className='relative'>
+    <div className='relative h-full w-full'>
       <Map
-        markers={schools.map((school) => ({
-          location: [school.longitude, school.latitude],
-          pin: '/pin.png',
-          logo: school.logo,
-          name: school.name,
-        }))}
+        markers={schools
+          .filter((school) => school.latitude != null && school.longitude != null)
+          .map((school) => ({
+            location: [school.longitude, school.latitude],
+            pin: '/pin.png',
+            logo: (school.logo && typeof school.logo === 'string' && school.logo.trim() !== '') ? school.logo : null,
+            name: school.name,
+          }))}
         places={data.places}
         setSchoolOpen={setSchoolOpen}
         setSchool={setSchool}
