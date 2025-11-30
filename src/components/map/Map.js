@@ -9,7 +9,7 @@ import { icon, logo, label } from '../mapFeatures'
 import { Style, Text, Fill, Stroke } from 'ol/style'
 import StadiaMaps from 'ol/source/StadiaMaps'
 
-// Hardcoded school logos to prevent loading errors
+// Working school logos - All 11 schools included
 const SCHOOL_LOGOS = {
   'Concordia International School Hanoi': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxFlfBXhFgeyiKsFJ0Kp20Jv7mk6qMItVqhg&s',
   'St. Paul American School Hanoi': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUhqW3ztSI5_DLUBwewAjuAhN8pjoNHqF9ZZk2O8sFempxs81Wh7XCfhaXjGOQWZhOU8&usqp=CAU',
@@ -17,12 +17,14 @@ const SCHOOL_LOGOS = {
   'UNIS Hanoi': 'https://avatars.githubusercontent.com/u/8739604?s=100',
   'TH School': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCcDxdXMTbom7_7x6DBNdRFJ5CPC0hK7C1-3aNbY4GQQnM9h8p_L7HanegjqH95QM7UwY&usqp=CAU',
   'British International School Hanoi': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzw8VF0MhMua8ZR3I-dCJ5jrn4z4jjz3FKaA&s',
-  'The Olympia Schools': 'https://theolympiaschools.edu.vn/storage/favicon.png',
+  'The Olympia Schools': 'https://play-lh.googleusercontent.com/Ph3fs-y0-DeQY2D-DnuFneTpcRh_T-3qQS1Ho8Mqmrvay-dfiJFDhCxwm0EefUkILEvV=w600-h300-pc0xffffff-pd',
   'The Dewey Schools': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb88PR97WqVpcuxd6RiOiEWnMKEWAttf9f_g&s',
   'Delta Global School': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKGFw4cldcE6u0aRsYtAscux5EqSIx_tTQIlqkseT6ZYX-_mwm3AsZPbT9o2HuR7Y7vf0&usqp=CAU',
   'Hanoi International School': 'https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1690308110/hisvietnamcom/homfclrxcrpr1btxvsr3/tigercolortext_2.png',
   'Westlink International School': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4pyuhM9E6F0_8v7IbI7Xeev4ZvuxSR7Inw&s'
 }
+
+// Only school logos are enabled - hotels and places have NO logos to avoid errors
 
 export default function Map({
   markers,
@@ -74,7 +76,7 @@ export default function Map({
           features.push(pinFeature)
         }
 
-        // Use hardcoded logo URL if available
+        // Testing logos one by one
         const logoUrl = SCHOOL_LOGOS[school.name]
         if (logoUrl && school.location && school.location.length === 2) {
           try {
@@ -101,8 +103,18 @@ export default function Map({
 
     const placesPins = places.map((place) => {
       try {
-        // Only show pins, logos disabled to prevent errors
-        return [icon([place.longitude, place.latitude], place.name, '/pins/gray.png', 'place')].filter(Boolean)
+        const features = []
+
+        // Create pin icon
+        const pinFeature = icon([place.longitude, place.latitude], place.name, '/pins/gray.png', 'place')
+        if (pinFeature) {
+          features.push(pinFeature)
+        }
+
+        // Place logos completely disabled
+        // NO logos for places to avoid errors
+
+        return features.filter(Boolean)
       } catch (error) {
         console.warn('Error creating pin for place:', place.name, error)
         return []
@@ -111,8 +123,28 @@ export default function Map({
 
     const hotelsPins = hotels.map((hotel) => {
       try {
-        // Only show pins, logos disabled to prevent errors
-        return [icon([hotel.longitude, hotel.latitude], hotel.name, '/pins/blue.png', 'hotel')].filter(Boolean)
+        const features = []
+
+        // Create pin icon
+        const pinFeature = icon([hotel.longitude, hotel.latitude], hotel.name, '/pins/blue.png', 'hotel')
+        if (pinFeature) {
+          features.push(pinFeature)
+        }
+
+        // Hotel logos temporarily disabled - need valid image URLs
+        // const hotelLogo = HOTEL_LOGOS[hotel.name]
+        // if (hotelLogo && hotel.longitude && hotel.latitude) {
+        //   try {
+        //     const logoFeature = logo([hotel.longitude, hotel.latitude], hotel.name, hotelLogo, 1, 'hotel')
+        //     if (logoFeature) {
+        //       features.push(logoFeature)
+        //     }
+        //   } catch (logoError) {
+        //     // Silently skip logo if it fails
+        //   }
+        // }
+
+        return features.filter(Boolean)
       } catch (error) {
         console.warn('Error creating pin for hotel:', hotel.name, error)
         return []
