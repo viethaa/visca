@@ -60,7 +60,7 @@ export default function Home({ schools }) {
                   {/* Sleek accent dot */}
                   <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
                   <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-wide">
-                    College Registration
+                    Register for VISCA Schools
                   </h2>
                 </div>
                 {/* Minimal divider */}
