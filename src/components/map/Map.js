@@ -24,7 +24,23 @@ const SCHOOL_LOGOS = {
   'Westlink International School': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4pyuhM9E6F0_8v7IbI7Xeev4ZvuxSR7Inw&s'
 }
 
-// Only school logos are enabled - hotels and places have NO logos to avoid errors
+// Hotel logos - Using URLs from data.json where available
+const HOTEL_LOGOS = {
+  'JW Marriott Hotel Hanoi': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Marriott_hotels_logo14.svg/2560px-Marriott_hotels_logo14.svg.png',
+  'Sheraton Hanoi Hotel': 'https://i.pinimg.com/1200x/b6/22/34/b6223414735309ceb097722445fb15fa.jpg',
+  'InterContinental Hanoi Westlake': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xkfs1V0wYSOEp4fkX1LVhFAbNYcInx_12g&s',
+  'Sofitel Legend Metropole Hanoi': 'https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODAxODYzLCJwdXIiOiJibG9iX2lkIn19--72d36f30567c78a0455b991faeee3a5dcd936e0d/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMzAwLDMwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--db34d5bc70e9225d5618c44e324a0c025a152b2b/sofitel-legend-metropole-hanoi-logo.jpeg',
+  'Lotte Hotel Hanoi': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeEVlcsvc2_Oc61p14bvjudZM3mF0tyXw15g&s',
+  'Pan Pacific Hanoi': 'https://ucarecdn.com/cdedc68e-43d7-4a01-95bc-e2e3ed0b2232/-/crop/1996x2000/0,0/-/preview/',
+  'Hilton Hanoi Opera': 'https://tiff.vn/wp-content/uploads/2023/07/Hilton-Hanoi-Opera-570x570-1-1.jpg',
+  'Melia Hanoi': 'https://static.ybox.vn/2017/10/25/7bea0dd4-b96a-11e7-b82f-2e995a9a3302.GIF'
+}
+
+// Place logos
+const PLACE_LOGOS = {
+  'Noibai Airport': '/plane.png',
+  'Hoan Kiem Lake / Downtown Hanoi': '/castle.png'
+}
 
 export default function Map({
   markers,
@@ -111,8 +127,18 @@ export default function Map({
           features.push(pinFeature)
         }
 
-        // Place logos completely disabled
-        // NO logos for places to avoid errors
+        // Place logos enabled
+        const placeLogo = PLACE_LOGOS[place.name]
+        if (placeLogo && place.longitude && place.latitude) {
+          try {
+            const logoFeature = logo([place.longitude, place.latitude], place.name, placeLogo, 1, 'place')
+            if (logoFeature) {
+              features.push(logoFeature)
+            }
+          } catch (logoError) {
+            // Silently skip logo if it fails
+          }
+        }
 
         return features.filter(Boolean)
       } catch (error) {
@@ -131,18 +157,18 @@ export default function Map({
           features.push(pinFeature)
         }
 
-        // Hotel logos temporarily disabled - need valid image URLs
-        // const hotelLogo = HOTEL_LOGOS[hotel.name]
-        // if (hotelLogo && hotel.longitude && hotel.latitude) {
-        //   try {
-        //     const logoFeature = logo([hotel.longitude, hotel.latitude], hotel.name, hotelLogo, 1, 'hotel')
-        //     if (logoFeature) {
-        //       features.push(logoFeature)
-        //     }
-        //   } catch (logoError) {
-        //     // Silently skip logo if it fails
-        //   }
-        // }
+        // Hotel logos enabled - add valid URLs to HOTEL_LOGOS constant
+        const hotelLogo = HOTEL_LOGOS[hotel.name]
+        if (hotelLogo && hotel.longitude && hotel.latitude) {
+          try {
+            const logoFeature = logo([hotel.longitude, hotel.latitude], hotel.name, hotelLogo, 1, 'hotel')
+            if (logoFeature) {
+              features.push(logoFeature)
+            }
+          } catch (logoError) {
+            // Silently skip logo if it fails
+          }
+        }
 
         return features.filter(Boolean)
       } catch (error) {

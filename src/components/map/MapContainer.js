@@ -11,7 +11,7 @@ export default function MapContainer({ schools }) {
   const [placeOpen, setPlaceOpen] = useState(false)
   const [place, setPlace] = useState({})
 
-  // Define the 4 featured hotels for the map
+  // Define the 8 featured hotels for the map
   const featuredHotels = [
     {
       name: "JW Marriott Hotel Hanoi",
@@ -41,6 +41,15 @@ export default function MapContainer({ schools }) {
       website: "https://hanoi.intercontinental.com/"
     },
     {
+      name: "Sofitel Legend Metropole Hanoi",
+      address: "15 Ngô Quyền, Tràng Tiền, Hoàn Kiếm, Hà Nội, Vietnam",
+      latitude: 21.0226,
+      longitude: 105.8544,
+      phone: "+84 024 3826 6919",
+      icon: "/hotel.png",
+      website: "https://www.sofitel-legend-metropole-hanoi.com/"
+    },
+    {
       name: "Lotte Hotel Hanoi",
       address: "54 Liễu Giai, Cống Vị, Ba Đình, Hà Nội, Vietnam",
       latitude: 21.0349,
@@ -48,6 +57,33 @@ export default function MapContainer({ schools }) {
       phone: "+84 024 3333 1000",
       icon: "/hotel.png",
       website: "https://www.lottehotel.com/hanoi-hotel/"
+    },
+    {
+      name: "Pan Pacific Hanoi",
+      address: "1 Thanh Niên, Quảng An, Tây Hồ, Hà Nội, Vietnam",
+      latitude: 21.0545,
+      longitude: 105.8353,
+      phone: "+84 024 3823 8888",
+      icon: "/hotel.png",
+      website: "https://www.panpacific.com/en/hotels-and-resorts/pp-hanoi.html"
+    },
+    {
+      name: "Hilton Hanoi Opera",
+      address: "1 Lê Thánh Tông, Tràng Tiền, Hoàn Kiếm, Hà Nội, Vietnam",
+      latitude: 21.0235,
+      longitude: 105.8562,
+      phone: "+84 024 3933 0500",
+      icon: "/hotel.png",
+      website: "https://www.hilton.com/en/hotels/hanhitw-hilton-hanoi-opera/"
+    },
+    {
+      name: "Melia Hanoi",
+      address: "44B Lý Thường Kiệt, Tràng Tiền, Hoàn Kiếm, Hà Nội, Vietnam",
+      latitude: 21.0208,
+      longitude: 105.8505,
+      phone: "+84 024 3934 3343",
+      icon: "/hotel.png",
+      website: "https://www.melia.com/en/hotels/vietnam/hanoi/melia-hanoi"
     }
   ]
 

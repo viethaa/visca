@@ -28,7 +28,7 @@ export default function HeaderBanner() {
   const navLinks = useMemo(
     () => [
       { href: "/", label: "Home" },
-      { href: "#information", label: "College Registration", isScroll: true },
+      { href: "#information", label: "College Visit Registration", isScroll: true },
       { href: "/map", label: "VISCA Map" },
       { href: "/hotels", label: "Hotels" },
     ],
