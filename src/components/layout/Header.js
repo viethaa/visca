@@ -309,8 +309,14 @@ export default function HeaderBanner() {
           <div
             className="absolute inset-0 bg-center bg-no-repeat bg-cover"
             style={{
-              backgroundImage: "url('https://statics.vinpearl.com/thap-rua-ho-guom-5_1691857514.jpg')",
-              backgroundPosition: "center 80%",
+              // TODO: Change back to original image after 1 month (January 2026)
+              // Original image (restore after 1 month):
+              // backgroundImage: "url('https://statics.vinpearl.com/thap-rua-ho-guom-5_1691857514.jpg')",
+              // backgroundPosition: "center 80%",
+
+              // Current image (temporary - until January 2026):
+              backgroundImage: "url('https://lilystravelagency.com/wp-content/uploads/2024/09/hoan-kiem-lake-night-market3.png')",
+              backgroundPosition: "center center",
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/45 to-black/60" />
