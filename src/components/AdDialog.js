@@ -32,8 +32,8 @@ export default function AdDialog({ open, onOpenChange }) {
         "
       >
         <img
-          src="/fair2025.png"
-          alt="Hanoi Fair 2025"
+          src="https://hearts2hands.s3.ap-southeast-2.amazonaws.com/assets/images/University+Fair+Poster+2026.jpg"
+          alt="World University Fair 2026"
           className="block w-full h-full object-cover"
         />
       </DialogContent>

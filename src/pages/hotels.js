@@ -91,10 +91,9 @@ export default function Hotels() {
   const navLinks = useMemo(
     () => [
       { href: "/", label: "Home" },
-      { href: "/#information", label: "School" },
-      { href: "/#locations", label: "VISCA Map" },
+      { href: "/#information", label: "College Registration" },
+      { href: "/map", label: "VISCA Map" },
       { href: "/hotels", label: "Hotels" },
-      { href: "/#events", label: "University Visits" },
     ],
     []
   )
@@ -232,9 +231,9 @@ export default function Hotels() {
       website: "https://www.hilton.com/en/hotels/hanhihi-hilton-hanoi-opera/",
       images: [
         "https://cdnphoto.dantri.com.vn/SWRXp4ZBe7mm0B_C9JCmEkdPai0=/zoom/1200_630/2021/03/04/hilton-1614827904717.jpg",
-        "https://lilystravelagency.com/wp-content/uploads/2024/09/hanoi-opera-house3.png",
         "https://cf.bstatic.com/xdata/images/hotel/max1024x768/483817070.jpg?k=968c7080b2a0219783dd013fe2a2fda59d7d3b918731db90608283c7ab692e82&o=&hp=1",
-        "https://monkeymiles.boardingarea.com/wp-content/uploads/2017/03/Hanoi-Hilton-Opera-75-of-83.jpg"
+        "https://monkeymiles.boardingarea.com/wp-content/uploads/2017/03/Hanoi-Hilton-Opera-75-of-83.jpg",
+        "https://hilton-hanoi-opera.hanoi-hotels.org/data/Photos/OriginalPhoto/12778/1277858/1277858851.JPEG"
       ],
       rating: 5,
       priceRange: "$100 - $160",
@@ -299,7 +298,7 @@ export default function Hotels() {
     <>
       <Head>
         <title>Hotels | VISCA</title>
-        <meta name="description" content="Premium hotels for VISCA events and university visits in Hanoi - JW Marriott, Sheraton, InterContinental, and Lotte Hotel" />
+        <meta name="description" content="Premium hotels for VISCA events in Hanoi - JW Marriott, Sheraton, InterContinental, and Lotte Hotel" />
       </Head>
 
       <div className="flex min-h-screen flex-col">
@@ -415,7 +414,7 @@ export default function Hotels() {
                   {/* Clean Subtitle in Box */}
                   <div className="inline-block px-4 py-2 bg-neutral-800/30 backdrop-blur-sm border border-neutral-700/20 rounded-md mx-auto mb-12">
                     <p className="text-base sm:text-lg text-neutral-300 leading-relaxed">
-                      Exceptional accommodations for VISCA events and university visits in Hanoi
+                      Exceptional accommodations for VISCA events in Hanoi
                     </p>
                   </div>
                 </div>
@@ -484,9 +483,9 @@ export default function Hotels() {
                           <span className="text-sm font-medium">{hotel.rating}.0</span>
                         </div>
 
-                        {/* Image Counter */}
+                        {/* Image Label */}
                         <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded text-xs">
-                          {(currentImageIndex[index] || 0) + 1} / {hotel.images.length}
+                          {['Hotel', 'Room', 'Pool', 'Dining'][currentImageIndex[index] || 0]}
                         </div>
                       </div>
 
@@ -610,7 +609,7 @@ export default function Hotels() {
                         <Users className="w-5 h-5 text-white/80" />
                       </div>
                       <h4 className="font-medium text-white/90 mb-2 text-sm">Business Facilities</h4>
-                      <p className="text-white/60 text-xs">Meeting rooms for university visits</p>
+                      <p className="text-white/60 text-xs">Meeting rooms and event spaces</p>
                     </div>
                   </div>
                 </div>

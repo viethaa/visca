@@ -1,6 +1,5 @@
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
-import MapContainer from '@/components/map/MapContainer'
 import Head from 'next/head'
 import List from '@/components/List'
 import data from '@/data.json'
@@ -55,13 +54,13 @@ export default function Home({ schools }) {
           <div className="max-w-5xl mx-auto">
             <div className="flex flex-col gap-10">
 
-              {/* Clean Modern School Information Header */}
+              {/* Clean Modern College Registration Header */}
               <div id="information" className="flex items-center mt-8 sm:mt-10 mb-6">
                 <div className="flex items-center gap-3">
                   {/* Sleek accent dot */}
                   <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
                   <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-wide">
-                    School Information
+                    Register for VISCA Schools
                   </h2>
                 </div>
                 {/* Minimal divider */}
@@ -72,39 +71,7 @@ export default function Home({ schools }) {
                 <div className="w-full">
                   <List schools={schools} />
                 </div>
-
-                {/* Legend */}
-                {/* <div className="flex flex-wrap items-center gap-6">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-4 h-4 rounded bg-black border border-zinc-600"></div>
-                    <span className="text-sm font-semibold">Schools</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-4 h-4 rounded bg-cyan-500"></div>
-                    <span className="text-sm font-semibold">Hotels</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-4 h-4 rounded bg-gray-400"></div>
-                    <span className="text-sm font-semibold">Places</span>
-                  </div>
-                </div> */}
               </div>
-
-              {/* Clean Modern Locations Header */}
-              <div id="locations" className="flex items-center mt-8 sm:mt-10 mb-6">
-                <div className="flex items-center gap-3">
-                  {/* Sleek accent dot */}
-                  <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
-                  <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-wide">
-                    VISCA Map
-                  </h2>
-                </div>
-                {/* Minimal divider */}
-                <div className="flex-1 ml-6 h-px bg-gradient-to-r from-white/20 to-transparent"></div>
-              </div>
-
-              {/* Map always visible below */}
-              <MapContainer schools={schools} />
             </div>
           </div>
           <Footer />

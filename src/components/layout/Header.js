@@ -28,10 +28,9 @@ export default function HeaderBanner() {
   const navLinks = useMemo(
     () => [
       { href: "/", label: "Home" },
-      { href: "#information", label: "School", isScroll: true },
-      { href: "#locations", label: "VISCA Map", isScroll: true },
+      { href: "#information", label: "College Visit Registration", isScroll: true },
+      { href: "/map", label: "VISCA Map" },
       { href: "/hotels", label: "Hotels" },
-      { href: "#events", label: "University Visits" },
     ],
     []
   );
@@ -171,11 +170,11 @@ export default function HeaderBanner() {
 
       <div className="relative text-white">
         {/* NAVBAR */}
-        <div className="fixed inset-x-0 top-0 z-[1000] border-b border-white/10 bg-black/20 backdrop-blur-md">
-          <div className="relative flex h-16 items-center px-4 md:px-6">
+        <div className="fixed inset-x-0 top-0 z-[1000] border-b border-white/5 bg-black/30 backdrop-blur-xl">
+          <div className="relative flex h-16 items-center px-6 md:px-8">
             <div className="flex-none">
-              <div className="rounded-md bg-neutral-900/95 px-3 py-2 border border-white/10 shadow-sm">
-                <span className="text-white font-bold tracking-widest text-xs">VISCA</span>
+              <div className="rounded-lg bg-white/5 backdrop-blur-sm px-4 py-2 border border-white/10">
+                <span className="text-white font-bold tracking-[0.2em] text-sm">VISCA</span>
               </div>
             </div>
 
@@ -184,7 +183,7 @@ export default function HeaderBanner() {
               className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8"
             >
               <span
-                className="pointer-events-none absolute -bottom-2 h-[2px] rounded-full bg-white transition-all duration-300 ease-out"
+                className="pointer-events-none absolute -bottom-1 h-[2px] rounded-full bg-white transition-all duration-300 ease-out"
                 style={{ left: slider.left, width: slider.width }}
               />
               {navLinks.map((l) => {
@@ -203,8 +202,8 @@ export default function HeaderBanner() {
                       <span
                         ref={(el) => (itemRefs.current[l.href] = el)}
                         className={[
-                          "text-sm font-medium tracking-wide transition-colors cursor-pointer",
-                          isActive ? "text-white font-semibold" : "text-white/80 hover:text-white",
+                          "text-sm font-medium transition-colors cursor-pointer",
+                          isActive ? "text-white font-semibold" : "text-white/70 hover:text-white",
                         ].join(" ")}
                       >
                         {l.label}
@@ -310,8 +309,14 @@ export default function HeaderBanner() {
           <div
             className="absolute inset-0 bg-center bg-no-repeat bg-cover"
             style={{
-              backgroundImage: "url('https://statics.vinpearl.com/thap-rua-ho-guom-5_1691857514.jpg')",
-              backgroundPosition: "center 80%",
+              // TODO: Change back to original image after 1 month (January 2026)
+              // Original image (restore after 1 month):
+              // backgroundImage: "url('https://statics.vinpearl.com/thap-rua-ho-guom-5_1691857514.jpg')",
+              // backgroundPosition: "center 80%",
+
+              // Current image (temporary - until January 2026):
+              backgroundImage: "url('https://lilystravelagency.com/wp-content/uploads/2024/09/hoan-kiem-lake-night-market3.png')",
+              backgroundPosition: "center center",
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/45 to-black/60" />
@@ -331,6 +336,12 @@ export default function HeaderBanner() {
                     Association
                   </span>
                 </h1>
+
+                <div className="inline-block">
+                  <div className="rounded-lg bg-white/10 backdrop-blur-md px-5 py-2.5 border border-white/30 shadow-lg">
+                    <span className="text-white font-bold tracking-[0.2em] text-lg">VISCA</span>
+                  </div>
+                </div>
 
                 <div className="mt-3 w-48 max-w-xs">
                   <div className="h-1.5 w-full rounded-full bg-neutral-200/40 breathing" />
@@ -364,17 +375,17 @@ export default function HeaderBanner() {
                     <div className="flex items-start justify-between">
                       <div>
                         <div className="text-[11px] uppercase tracking-[0.18em] text-white/70">Featured Events</div>
-                        <h3 className="mt-1 text-lg font-semibold tracking-tight">Hanoi University Fair 2025</h3>
+                        <h3 className="mt-1 text-lg font-semibold tracking-tight">World University Fair 2026</h3>
                       </div>
                       <div className="text-right">
                         <div className="inline-flex items-center gap-1 rounded-md bg-black/70 px-2.5 py-1.5 text-[12px] border border-white/10">
-                          <span>Oct</span>
-                          <span className="font-bold">01</span>
+                          <span>Apr</span>
+                          <span className="font-bold">08</span>
                         </div>
                       </div>
                     </div>
                     <p className="mt-3 text-sm text-white/90">
-                      Connect with counselors, students, and parents at the summit.
+                     Upcoming hosted in Hanoi, and Ho Chi Minh City
                     </p>
                     <div className="mt-4 flex items-center gap-3">
                       {/* <Link

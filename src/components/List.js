@@ -15,6 +15,21 @@ import {
 } from 'lucide-react'
 import Links from './map/Links'
 
+// Hardcoded school logos
+const SCHOOL_LOGOS = {
+  'Concordia International School Hanoi': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxFlfBXhFgeyiKsFJ0Kp20Jv7mk6qMItVqhg&s',
+  'St. Paul American School Hanoi': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTUhqW3ztSI5_DLUBwewAjuAhN8pjoNHqF9ZZk2O8sFempxs81Wh7XCfhaXjGOQWZhOU8&usqp=CAU',
+  'British Vietnamese International School Hanoi': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_b_K7kQMRwceuTgHI6_3aNvsFZkKTXk0yHg&s',
+  'UNIS Hanoi': 'https://avatars.githubusercontent.com/u/8739604?s=100',
+  'TH School': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCcDxdXMTbom7_7x6DBNdRFJ5CPC0hK7C1-3aNbY4GQQnM9h8p_L7HanegjqH95QM7UwY&usqp=CAU',
+  'British International School Hanoi': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzw8VF0MhMua8ZR3I-dCJ5jrn4z4jjz3FKaA&s',
+  'The Olympia Schools': 'https://theolympiaschools.edu.vn/storage/favicon.png',
+  'The Dewey Schools': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb88PR97WqVpcuxd6RiOiEWnMKEWAttf9f_g&s',
+  'Delta Global School': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKGFw4cldcE6u0aRsYtAscux5EqSIx_tTQIlqkseT6ZYX-_mwm3AsZPbT9o2HuR7Y7vf0&usqp=CAU',
+  'Hanoi International School': 'https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1690308110/hisvietnamcom/homfclrxcrpr1btxvsr3/tigercolortext_2.png',
+  'Westlink International School': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc4pyuhM9E6F0_8v7IbI7Xeev4ZvuxSR7Inw&s'
+}
+
 // Normalize helper: lowercase + strip non-alphanumerics
 const normalizeName = (name = '') => name.toLowerCase().replace(/[^a-z0-9]/g, '')
 
@@ -90,12 +105,12 @@ const defaultButtonColors = {
 }
 
 export default function List({ schools = [] }) {
-  // Initialize all schools to hide details by default
+  // Initialize all schools to show details by default
   const [openByName, setOpenByName] = useState(() => {
     const initialState = {}
     schools.forEach(school => {
       if (school?.name) {
-        initialState[school.name] = false
+        initialState[school.name] = true
       }
     })
     return initialState
@@ -226,12 +241,13 @@ export default function List({ schools = [] }) {
         const isOpen = !!openByName[school.name]
         const slug = normalizeName(school.name)
         const colors = buttonColors[slug] || defaultButtonColors
+        const logoUrl = SCHOOL_LOGOS[school.name] || school.logo
 
         return (
-          <div
-            key={school.name || `school-${idx}`}
-            className="group relative bg-neutral-900/90 backdrop-blur-xl shadow-xl rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 overflow-hidden"
-          >
+          <React.Fragment key={school.name || `school-${idx}`}>
+            <div
+              className="group relative bg-neutral-900/90 backdrop-blur-xl shadow-xl rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 overflow-hidden"
+            >
             {/* Hover tint */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/[0.02] via-purple-600/[0.01] to-cyan-600/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
 
@@ -241,9 +257,9 @@ export default function List({ schools = [] }) {
                 <div className="flex items-center gap-4">
                   {/* Logo */}
                   <div className="relative shrink-0">
-                    {school.logo ? (
+                    {logoUrl ? (
                       <img
-                        src={school.logo}
+                        src={logoUrl}
                         onLoad={onImageLoad}
                         className="h-16 w-16 rounded-xl object-cover ring-2 ring-gray-700/50 group-hover:ring-blue-500/30 transition-all duration-300 shadow-lg"
                         alt={`${school.name} logo`}
@@ -411,7 +427,15 @@ export default function List({ schools = [] }) {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+
+            {/* Subtle divider between cards */}
+            {idx < sortedSchools.length - 1 && (
+              <div className="flex items-center gap-3 py-2">
+                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+              </div>
+            )}
+          </React.Fragment>
         )
       })}
     </div>
