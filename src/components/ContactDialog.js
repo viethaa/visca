@@ -9,20 +9,17 @@ import {
 } from '@/components/ui/dialog'
 import ContactForm from './ContactForm'
 
-export default function ContactDialog() {
+// Wrap any button to make it open the contact form.
+export default function ContactDialog({ children }) {
   return (
     <Dialog>
-      <DialogTrigger className="group relative rounded-xl border border-white/20 bg-white/5 px-4 py-2 text-sm text-zinc-100 transition-all hover:bg-white/10 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/20 active:scale-[0.99]">
-        Contact
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
 
-      <DialogContent className="max-w-md bg-neutral-900/95 backdrop-blur-xl border border-white/10 text-white rounded-xl shadow-2xl">
-        <DialogHeader className="space-y-4 pb-6">
-          <DialogTitle className="text-xl font-semibold text-white">
-            Get in Touch
-          </DialogTitle>
-          <DialogDescription className="text-neutral-400 text-sm leading-relaxed">
-            Have questions about VISCA or want to connect? We&apos;d love to hear from you.
+      <DialogContent className='max-w-md gap-0 rounded-2xl border-line bg-surface p-7 text-ink shadow-sm sm:rounded-2xl'>
+        <DialogHeader className='space-y-2 pb-6 text-left'>
+          <DialogTitle className='text-xl'>Contact VISCA</DialogTitle>
+          <DialogDescription className='text-sm leading-relaxed text-muted'>
+            Ask about school visits, the university fair or joining the association.
           </DialogDescription>
         </DialogHeader>
 

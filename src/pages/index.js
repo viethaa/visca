@@ -1,82 +1,58 @@
-import Footer from '@/components/layout/Footer'
-import Header from '@/components/layout/Header'
+import { useState } from 'react'
 import Head from 'next/head'
-import List from '@/components/List'
-import data from '@/data.json'
-import { fetchSchools } from '@/functions'
-import Image from 'next/image'
-import AdDialog from '@/components/AdDialog'
-import { ChevronRight } from 'lucide-react'
+import Hero from '@/components/home/Hero'
+import FairStrip from '@/components/home/FairStrip'
+import Directory from '@/components/home/Directory'
+import PlanVisit from '@/components/home/PlanVisit'
+import HotelsTeaser from '@/components/home/HotelsTeaser'
+import { loadSchools } from '@/lib/loadSchools'
+import { ScrollProgress, useSectionSnap } from '@/components/ScrollCues'
+
+const SECTIONS = [
+  { id: 'top', label: 'Home' },
+  { id: 'schools', label: 'Member schools' },
+  { id: 'plan', label: 'Plan a visit' },
+  { id: 'stay', label: 'Hotels' },
+]
+const SECTION_IDS = SECTIONS.map((s) => s.id)
 
 // Keep spreadsheet order: DO NOT SORT.
 export async function getStaticProps() {
-  let schools = []
-
-  try {
-    const SHEET_ID = process.env.SPREADSHEET_ID
-
-    if (typeof SHEET_ID === 'string' && SHEET_ID.length > 0) {
-      // Use the sheet order as returned by your fetcher
-      schools = await fetchSchools(SHEET_ID)
-    } else {
-      // Fallback to local data.json (keeps file order)
-      schools = Array.isArray(data?.schools) ? data.schools : (Array.isArray(data) ? data : [])
-    }
-  } catch (err) {
-    // Safety net: never fail the build; use local data
-    schools = Array.isArray(data?.schools) ? data.schools : (Array.isArray(data) ? data : [])
-  }
-
-  // Normalize only; DO NOT change order.
-  schools = (Array.isArray(schools) ? schools : []).filter(Boolean)
-
   return {
-    props: { schools },
+    props: { schools: await loadSchools() },
     revalidate: 60,
   }
 }
 
 export default function Home({ schools }) {
-  console.log(schools)
+  useSectionSnap(SECTION_IDS)
+  // Shared by the hero search and the directory filter
+  const [query, setQuery] = useState('')
+
   return (
     <>
       <Head>
-        <title>Home | VISCA</title>
+        <title>VISCA</title>
+        <meta
+          name='description'
+          content='Counselor contacts, visit times and directions for VISCA member schools in Hanoi, for visiting university representatives.'
+        />
+        <meta property='og:title' content='VISCA | Visit Hanoi’s international schools' />
+        <meta
+          property='og:description'
+          content='Counselor contacts and preferred visit times for VISCA member schools in Hanoi.'
+        />
+        <meta property='og:type' content='website' />
       </Head>
 
-      <div className="flex min-h-screen flex-col">
-        <Header />
-
-        <main
-          id="map-container"
-          className="flex-grow p-4 sm:p-8 bg-gradient-to-br from-black via-neutral-950 to-black text-white"
-        >
-          <div className="max-w-5xl mx-auto">
-            <div className="flex flex-col gap-10">
-
-              {/* Clean Modern College Registration Header */}
-              <div id="information" className="flex items-center mt-8 sm:mt-10 mb-6">
-                <div className="flex items-center gap-3">
-                  {/* Sleek accent dot */}
-                  <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
-                  <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-wide">
-                    Register for VISCA Schools
-                  </h2>
-                </div>
-                {/* Minimal divider */}
-                <div className="flex-1 ml-6 h-px bg-gradient-to-r from-white/20 to-transparent"></div>
-              </div>
-              {/* Content (always visible) */}
-              <div className="space-y-6">
-                <div className="w-full">
-                  <List schools={schools} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <Footer />
-        </main>
-      </div>
+      <ScrollProgress />
+      <Hero />
+      <main id='main'>
+        <Directory schools={schools} query={query} setQuery={setQuery} />
+        <PlanVisit />
+        <HotelsTeaser />
+        <FairStrip />
+      </main>
     </>
   )
 }
