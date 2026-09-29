@@ -32,7 +32,7 @@ export default function Home({ schools }) {
   return (
     <>
       <Head>
-        <title>VISCA | Hanoi international school counselors</title>
+        <title>VISCA</title>
         <meta
           name='description'
           content='Counselor contacts, visit times and directions for VISCA member schools in Hanoi, for visiting university representatives.'
